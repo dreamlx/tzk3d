@@ -49,6 +49,10 @@ group :development do
   gem "guard-rspec"
   gem "guard"
   gem "rspec-rails"
+  
+  gem 'rb-fsevent'
+  gem 'growl'
+  gem 'guard-pow'
 end
 
 group :test do
