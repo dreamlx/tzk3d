@@ -89,6 +89,8 @@ GEM
       childprocess (>= 0.2.3)
       guard (>= 1.1)
       spork (>= 0.8.4)
+    haml (4.0.0)
+      tilt
     heroku (2.35.0)
       heroku-api (~> 0.3.7)
       launchy (>= 0.3.2)
@@ -236,6 +238,7 @@ DEPENDENCIES
   guard-pow
   guard-rspec
   guard-spork
+  haml
   heroku
   jquery-rails
   launchy (>= 2.0.5)

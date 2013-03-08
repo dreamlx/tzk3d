@@ -1,4 +1,5 @@
 Tzk3d::Application.routes.draw do
+  resources :topics, only: [:index]
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

@@ -23,7 +23,7 @@ group :assets do
 end
 
 gem 'jquery-rails'
-
+gem 'haml'
 
 gem "heroku"
 
@@ -49,7 +49,7 @@ group :development do
   gem "guard-rspec"
   gem "guard"
   gem "rspec-rails"
-  
+  gem "capybara",">= 1.1.1"
   gem 'rb-fsevent'
   gem 'growl'
   gem 'guard-pow'

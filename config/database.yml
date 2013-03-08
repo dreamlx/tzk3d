@@ -4,38 +4,36 @@
 #   Ensure the SQLite 3 gem is defined in your Gemfile
 #   gem 'sqlite3'
 development:
-    adapter: postgresql
-    host: localhost
-    port: 5432
-    username: postgres
-    password: 791126
-    database: tzk3d_dev
-    schema_search_path: public
-    encoding: utf8
-    template: template0
-
-
+  adapter: postgresql
+  encoding: unicode
+  database: tzk3d_dev
+  pool: 5
+  host: localhost
+  port: 5432
+  username: postgres
+  password: 791126
 
 test:
-    adapter: postgresql
-    host: localhost
-    port: 5432
-    username: postgres
-    password: 791126
-    database: tzk3d_test
-    schema_search_path: public
-    encoding: utf8
-    template: template0
+  adapter: postgresql
+  encoding: unicode
+  database: tzk3d_test
+  pool: 5
+  host: localhost
+  port: 5432
+  username: pgtest
+  password: 791126
+
 
 
 production:
-    adapter: postgresql
-    host: localhost
-    port: 5432
-    username: postgres
-    password: 791126
-    database: tzk3d_production
-    schema_search_path: public
-    encoding: utf8
-    template: template0
+  adapter: postgresql
+  encoding: unicode
+  database: tzk3d_production
+  pool: 5
+  host: localhost
+  port: 5432
+  username: postgres
+  password: 791126
+
+
 
