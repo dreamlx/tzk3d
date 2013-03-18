@@ -1,0 +1,21 @@
+#content
+  .title
+    %h1
+      3d图纸分享库
+      %a{:href =>"#"} more
+- @products.each do |product|      
+  .product-box
+    .product-img
+      = product.photos.primary unless prduct.photos.nil?
+    .product-details
+    .product-name
+      = product.name
+    .product-designer
+      = product.designer
+    .price-rating-container
+      .rating
+        = product.rating
+      .price
+        = product.price
+    
+    

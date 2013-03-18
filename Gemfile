@@ -24,7 +24,8 @@ end
 
 gem 'jquery-rails'
 gem 'haml'
-
+gem 'carrierwave'
+gem 'rmagick'
 gem "heroku"
 
 if HOST_OS =~ /linux/i
