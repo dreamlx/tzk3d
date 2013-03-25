@@ -1,4 +1,7 @@
 Tzk3d::Application.routes.draw do
+
+  devise_for :users
+
   resources :products
 
 

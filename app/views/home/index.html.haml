@@ -1,21 +1,23 @@
-#content
-  .title
-    %h1
-      3d图纸分享库
-      %a{:href =>"#"} more
-- @products.each do |product|      
-  .product-box
-    .product-img
-      = product.photos.primary unless prduct.photos.nil?
-    .product-details
-    .product-name
-      = product.name
-    .product-designer
-      = product.designer
-    .price-rating-container
-      .rating
-        = product.rating
-      .price
-        = product.price
+.hero-unit
+  %h1
+    3d图纸库
+  %p 分享3d圖紙和打印模型，爲設計師提供一站式服務
+  %p= link_to "Learn more",nil ,:class => "btn btn-primary btn-large",:style => "color:white"
+
+.row-fluid
+  %ul.thumbnails
+    - @products.each do |product|      
+      %li.product-box.span4
+        %a{:href => product_path(product), :class => "thumbnail"}
+          =image_tag(product.photo.thumbnail.url) unless product.photo.nil?
+          .product-details.caption
+            %h3
+              = product.name
+            %p.product-designer= product.designer
+            .price-rating-container
+              .rating
+                = product.rating
+              .price
+                = product.price
     
     
