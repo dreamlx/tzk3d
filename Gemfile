@@ -9,7 +9,8 @@ gem 'devise'
 
 gem 'pg'
 gem 'bootstrap-sass', '2.0.0'
-
+gem "cancan"
+gem "acts_as_rateable", :git => "git://github.com/anton-zaytsev/acts_as_rateable.git"
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do

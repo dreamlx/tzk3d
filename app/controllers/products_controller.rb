@@ -11,6 +11,33 @@ class ProductsController < ApplicationController
     end
   end
 
+  def purchase
+    @products = current_user.purchase_products
+    @tab1_status = "active"
+    respond_to do |format|
+      format.html { render action: "index" }
+      format.json { render json: @products }
+    end
+  end
+  
+  def favor
+    @products = current_user.favor_products
+    @tab2_status = "active"
+    respond_to do |format|
+      format.html { render action: "index" }
+      format.json { render json: @products }
+    end
+  end
+  
+  def uploaded
+    @products = current_user.uploaded_products
+    @tab3_status = "active"
+    respond_to do |format|
+      format.html { render action: "index" }
+      format.json { render json: @products }
+    end
+  end
+  
   # GET /products/1
   # GET /products/1.json
   def show
@@ -38,6 +65,12 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
   end
 
+  def add_favor
+  end
+  
+  def cancel_favor
+  end
+  
   # POST /products
   # POST /products.json
   def create

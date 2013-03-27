@@ -14,16 +14,16 @@
     .item-label= f.label :designer
     .item-column= f.text_field :designer
   .field
-    .item-label= f.label :rating
-    .item-column= f.text_field :rating
-  .field
     .item-label= f.label :price
     .item-column= f.text_field :price
   .field
     .item-label= f.label :photo
+    = image_tag @product.photo.thumb.url unless @product.photo.nil?
     .item-column= f.file_field :photo
   .field
-    .item-label= f.label :model3d
+    .item-label
+      = f.label :model3d
+      %span.label= @product.model3d.url.split('/').last unless @product.model3d.nil?
     .item-column= f.file_field :model3d
   
   .actions

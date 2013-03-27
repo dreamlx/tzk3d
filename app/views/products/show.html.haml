@@ -1,0 +1,33 @@
+.container-fluid
+  .shop-info-text
+    %h1= @product.name
+    %span.label.label-info
+      Desinger:
+      = @product.designer
+    %span.label.label-info
+      Rating:
+      = @product.average_rating_round
+    %span.label.label-info 
+      (5)comments
+  .row-fluid
+    .span10
+      %a{:class => 'thumbnail', :href => @product.photo.url, :targe => "_blank"}
+        = image_tag @product.photo.normal.url
+      %p= @product.desc
+      %p= @product.size unless @product.size.blank?
+    .span2
+      %p
+        %span.label.label-important
+          Price
+          = @product.price    
+      %p 
+        %a{:href => @product.model3d.url } 
+          %button.btn Download Model
+
+      
+
+  = link_to 'Edit', edit_product_path(@product) 
+  |
+  = link_to 'Destroy', @product, method: :delete, data: { confirm: 'Are you sure?' }
+  |
+  = link_to 'Back', root_path 

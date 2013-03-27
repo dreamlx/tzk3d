@@ -2,7 +2,18 @@ Tzk3d::Application.routes.draw do
 
   devise_for :users
 
-  resources :products
+  resources :products do
+    collection do
+      get :purchase
+      get :uploaded
+      get :favor
+    end
+    
+    member do
+      put :add_favor
+      put :cancel_favor
+    end
+  end
 
 
   resources :topics, only: [:index]
