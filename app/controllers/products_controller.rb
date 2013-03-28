@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_filter :authenticate_user!, :only =>[:new, :edit, :update]
+  before_filter :authenticate_user!, :except =>[:show]
   respond_to :html, :js, :json
   # GET /products
   # GET /products.json
@@ -10,7 +10,7 @@ class ProductsController < ApplicationController
   end
 
   def purchase
-    @products = current_user.purchase_products
+    @products = current_user.purchase_products.paginate(page: params[:page], per_page: 21)
     @tab1_status = "active"
     respond_to do |format|
       format.html { render action: "index" }
@@ -19,7 +19,7 @@ class ProductsController < ApplicationController
   end
   
   def favor
-    @products = current_user.favor_products
+    @products = current_user.favor_products.paginate(page: params[:page], per_page: 21)
     @tab2_status = "active"
     respond_to do |format|
       format.html { render action: "index" }
@@ -28,7 +28,7 @@ class ProductsController < ApplicationController
   end
   
   def uploaded
-    @products = current_user.uploaded_products
+    @products = current_user.uploaded_products.paginate(page: params[:page], per_page: 21)
     @tab3_status = "active"
     respond_to do |format|
       format.html { render action: "index" }
@@ -40,7 +40,6 @@ class ProductsController < ApplicationController
   # GET /products/1.json
   def show
     @product = Product.find(params[:id])
-
     respond_with @product
   end
 
@@ -108,6 +107,27 @@ class ProductsController < ApplicationController
       format.html { redirect_to uploaded_products_path }
       format.json { head :no_content }
     end
+  end
+  
+  # comments
+  def comments
+    @comments = Product.find(params[:id]).comments
+  end
+  
+  def add_comment
+    p = Product.find(params[:id])
+    c = Comment.new(params[:comment])
+    c.user_id = current_user.id
+    c.save
+    p.comments << c
+    redirect_to product_path(p), notice: 'Comment was successfully added.'
+  end
+  
+  def remove_comment
+    c = Comment.find(params[:comment_id])
+    p =  Product.find(params[:id])
+    p.comments.delete(c)
+    redirect_to product_path(p), notice: 'Comment was successfully deleted.'
   end
   
   private

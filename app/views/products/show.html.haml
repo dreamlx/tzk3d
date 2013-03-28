@@ -14,8 +14,9 @@
     %span.label.label-info
       Rating:
       = @product.average_rating_round
-    %span.label.label-info 
-      (5)comments
+    %span.label.label-info
+      = "(#{@product.comments.count})comments"
+      
       
   .row-fluid
     .span9
@@ -24,21 +25,29 @@
           = image_tag @product.photo.normal.url
       %p= @product.desc
       %p= @product.size unless @product.size.blank?
-    .span3
-      %p
-        
+      %h1.comments
+        Comments
+      .comments-container
+        %p
+          = render "/comments/leave_comment"
+        - unless @product.comments.empty?
+          = render partial: "/comments/comment", collection: @product.comments
+    .span3        
       %p{:id => "favor"}
         .star
-        -if @product.check_favor(current_user)
-          = button_to "Add to Favorites", add_favor_product_path, |
-          :method => :put, :class => "btn btn-warning"
-        -else
-          = button_to "Move from Favorites", cancel_favor_product_path, |
-          :method => :put, :class => "btn btn-danger"
+        -if current_user and 
+          -if @product.check_favor(current_user) 
+            = button_to "Add to Favorites", add_favor_product_path, |
+            :method => :put, :class => "btn btn-warning"
+          -else
+            = button_to "Move from Favorites", cancel_favor_product_path, |
+            :method => :put, :class => "btn btn-danger"
       %p 
         %a.btn{:href => @product.model3d.url } Download Model
+  
 
-  - if @product.owner?(current_user)      
+  
+  - if current_user and @product.owner?(current_user)      
     = link_to 'Edit', edit_product_path(@product) 
     |
     = link_to 'Destroy', @product, method: :delete, data: { confirm: 'Are you sure?' }

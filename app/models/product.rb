@@ -3,6 +3,7 @@ class Product < ActiveRecord::Base
   validates_presence_of :name, :model3d, :photo
 
   acts_as_rateable
+  acts_as_commentable
 
   mount_uploader :photo, PhotoUploader
   mount_uploader :model3d, Model3dUploader

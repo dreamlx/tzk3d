@@ -12,6 +12,9 @@ Tzk3d::Application.routes.draw do
     member do
       put :add_favor
       put :cancel_favor
+      get :comments
+      post :add_comment
+      delete :remove_comment
     end
   end
 

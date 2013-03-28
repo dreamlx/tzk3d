@@ -1,0 +1,8 @@
+.comment
+  %h4.comment-user
+    = comment.user.name unless (comment.user.nil? or comment.user.name.nil?)
+  .comment-title
+    = comment.title
+  .comment-action
+    %span.right= link_to 'Remove', remove_comment_product_path(comment_id: comment.id), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-small' if current_user
+    %span.right= comment.created_at.ctime

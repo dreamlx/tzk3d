@@ -1,6 +1,7 @@
 class Comment < ActiveRecord::Base
 
   include ActsAsCommentable::Comment
+  attr_accessible :title, :comment
 
   belongs_to :commentable, :polymorphic => true
 
