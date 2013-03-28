@@ -11,6 +11,7 @@ gem 'pg'
 gem 'bootstrap-sass', '2.0.0'
 gem "cancan"
 gem "acts_as_rateable", :git => "git://github.com/anton-zaytsev/acts_as_rateable.git"
+gem 'acts_as_commentable', '3.0.1'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -26,6 +27,8 @@ end
 gem 'jquery-rails'
 gem 'haml'
 gem 'carrierwave'
+#gem 'will_paginate', '~> 3.0'
+gem 'bootstrap-will_paginate', :git => 'git://github.com/yrgoldteeth/bootstrap-will_paginate.git'
 gem 'rmagick'
 gem "heroku"
 gem 'rack-livereload'  

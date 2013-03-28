@@ -1,7 +1,7 @@
 class Product < ActiveRecord::Base
   attr_accessible :designer, :name, :photo, :price, :model3d, :desc, :size
   validates_presence_of :name, :model3d, :photo
-  
+
   acts_as_rateable
 
   mount_uploader :photo, PhotoUploader

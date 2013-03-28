@@ -1,6 +1,9 @@
 #story
 users can see all pic
 
+#paginate css style
+    http://mislav.uniqpath.com/will_paginate/
+
 ## act_as_rateable
 
     # rate for selected post
