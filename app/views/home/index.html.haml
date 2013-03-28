@@ -13,11 +13,12 @@
           .product-details.caption
             %h3
               = product.name
-            %p.product-designer= product.designer
-            .price-rating-container
+            %p
+              .product-designer
+                = "Designer: " + product.designer
               .rating
-                = product.average_rating_round
+                = "Rating: " + product.average_rating_round.to_s
               .price
-                = product.price
+                = "Price: " + product.price.to_s
     
     

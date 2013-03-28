@@ -1,14 +1,25 @@
 @import "bootstrap";  
 .row-fluid .product-box {
-    width: 31%;
+  width: 31%;
 }
 
-.product-box a:hover{
+.thumbnails a:hover{
   background-color:white;
   color:#666;
   text-decoration:none;
 }
 
+.thumbnail a:hover{
+  background-color:white;
+}
+
 .shop-info-text span{
   margin-right:10px;
 }
+
+h1{
+  font-size: 1.5em;
+  font-weight: 300;
+  line-height: 1.2em;
+}
+

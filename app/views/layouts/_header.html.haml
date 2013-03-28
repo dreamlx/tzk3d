@@ -3,8 +3,8 @@
     .container
       = link_to "3DTZK", root_path, :class => "brand"
       %ul{:class => "nav"}
-        
-        %li=    link_to "Products", purchase_products_path
+        %li=    link_to "Create", new_product_path
+        %li=    link_to "My Products", favor_products_path
         - if user_signed_in?
           %li=  link_to('Logout', destroy_user_session_path, :method => :delete)
         - else

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130327031451) do
+ActiveRecord::Schema.define(:version => 20130327080345) do
 
   create_table "nodes", :force => true do |t|
     t.string   "name"
@@ -32,11 +32,12 @@ ActiveRecord::Schema.define(:version => 20130327031451) do
     t.string   "designer"
     t.decimal  "price"
     t.string   "photo"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
     t.string   "model3d"
     t.text     "desc"
     t.string   "size"
+    t.boolean  "favor",      :default => false
   end
 
   create_table "rates", :force => true do |t|

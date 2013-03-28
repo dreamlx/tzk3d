@@ -1,14 +1,12 @@
 class ProductsController < ApplicationController
   before_filter :authenticate_user!, :only =>[:new, :edit, :update]
+  respond_to :html, :js, :json
   # GET /products
   # GET /products.json
   def index
     @products = Product.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @products }
-    end
+    
+    respond_with @products
   end
 
   def purchase
@@ -43,10 +41,7 @@ class ProductsController < ApplicationController
   def show
     @product = Product.find(params[:id])
 
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @product }
-    end
+    respond_with @product
   end
 
   # GET /products/new
@@ -54,36 +49,23 @@ class ProductsController < ApplicationController
   def new
     @product = Product.new
 
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @product }
-    end
+    respond_with @product
   end
 
   # GET /products/1/edit
   def edit
     @product = Product.find(params[:id])
   end
-
-  def add_favor
-  end
-  
-  def cancel_favor
-  end
   
   # POST /products
   # POST /products.json
   def create
     @product = Product.new(params[:product])
-
-    respond_to do |format|
-      if @product.save
-        format.html { redirect_to @product, notice: 'Product was successfully created.' }
-        format.json { render json: @product, status: :created, location: @product }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @product.errors, status: :unprocessable_entity }
-      end
+    if @product.save
+      respond_with @product, notice: 'Product was successfully created.' 
+      create_rs(current_user.id, @product.id, "uploaded")
+    else
+      render action: "new"
     end
   end
 
@@ -103,15 +85,43 @@ class ProductsController < ApplicationController
     end
   end
 
+  def add_favor
+    create_rs(current_user.id, params[:id], "favor")
+    @product = Product.find(params[:id])
+    respond_with @product
+  end
+  
+  def cancel_favor
+    drop_rs(current_user.id, params[:id], "favor")
+    @product = Product.find(params[:id])
+    respond_with @product    
+  end
+  
   # DELETE /products/1
   # DELETE /products/1.json
   def destroy
     @product = Product.find(params[:id])
+    drop_rs(current_user.id, params[:id], "uploaded")
     @product.destroy
 
     respond_to do |format|
-      format.html { redirect_to products_url }
+      format.html { redirect_to uploaded_products_path }
       format.json { head :no_content }
     end
   end
+  
+  private
+  def create_rs(user_id,product_id,rs_type)
+    rs = ProductRelation.new
+    rs.user_id = user_id
+    rs.product_id = product_id
+    rs.rs_name = rs_type
+    rs.save
+  end
+  
+  def drop_rs(user_id,product_id,rs_type)
+    rs = ProductRelation.find_by_user_id_and_product_id_and_rs_name(user_id, product_id, rs_type)
+    rs.destroy
+  end
+  
 end

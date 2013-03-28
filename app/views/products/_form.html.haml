@@ -23,7 +23,8 @@
   .field
     .item-label
       = f.label :model3d
-      %span.label= @product.model3d.url.split('/').last unless @product.model3d.nil?
+      -unless @product.model3d.blank? or @product.blank?
+        %span.label= @product.model3d.url.split('/').last 
     .item-column= f.file_field :model3d
   
   .actions

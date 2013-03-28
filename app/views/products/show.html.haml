@@ -1,6 +1,13 @@
 .container-fluid
   .shop-info-text
-    %h1= @product.name
+    
+    %h1
+      = h_product_nav()
+      » 
+      = @product.name
+    %span.label.label-important
+      Price:
+      = @product.price    
     %span.label.label-info
       Desinger:
       = @product.designer
@@ -9,25 +16,31 @@
       = @product.average_rating_round
     %span.label.label-info 
       (5)comments
+      
   .row-fluid
-    .span10
-      %a{:class => 'thumbnail', :href => @product.photo.url, :targe => "_blank"}
-        = image_tag @product.photo.normal.url
+    .span9
+      .thumbnail
+        %a{:href => @product.photo.url, :targe => "_blank"}
+          = image_tag @product.photo.normal.url
       %p= @product.desc
       %p= @product.size unless @product.size.blank?
-    .span2
+    .span3
       %p
-        %span.label.label-important
-          Price
-          = @product.price    
+        
+      %p{:id => "favor"}
+        .star
+        -if @product.check_favor(current_user)
+          = button_to "Add to Favorites", add_favor_product_path, |
+          :method => :put, :class => "btn btn-warning"
+        -else
+          = button_to "Move from Favorites", cancel_favor_product_path, |
+          :method => :put, :class => "btn btn-danger"
       %p 
-        %a{:href => @product.model3d.url } 
-          %button.btn Download Model
+        %a.btn{:href => @product.model3d.url } Download Model
 
-      
-
-  = link_to 'Edit', edit_product_path(@product) 
-  |
-  = link_to 'Destroy', @product, method: :delete, data: { confirm: 'Are you sure?' }
-  |
-  = link_to 'Back', root_path 
+  - if @product.owner?(current_user)      
+    = link_to 'Edit', edit_product_path(@product) 
+    |
+    = link_to 'Destroy', @product, method: :delete, data: { confirm: 'Are you sure?' }
+    |
+    = link_to 'Back', products_path

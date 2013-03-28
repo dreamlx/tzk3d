@@ -12,9 +12,16 @@ class Product < ActiveRecord::Base
   
   has_many :purchase_users, :through => :product_relations, :source => :user, :conditions => "rs_name = 'purchase'"
   has_many :favor_users, :through => :product_relations, :source => :user, :conditions => "rs_name = 'favor'"
-  has_many :uploaded_users, :through => :product_relations, :source => :user, :conditions => "rs_name = 'uploaded'"
+  has_many :uploaded_user, :through => :product_relations, :source => :user, :conditions => "rs_name = 'uploaded'"
   
   
+  def check_favor(current_user)
+    ProductRelation.find_by_user_id_and_product_id(current_user.id, self.id).blank?
+  end
+  
+  def owner?(user)
+    !ProductRelation.find(:first, conditions: "product_id = #{self.id} and user_id = #{user.id} and rs_name = 'uploaded'").nil?
+  end
 end
 
 
