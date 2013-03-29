@@ -4,7 +4,12 @@ source 'http://rubygems.org'
 
 gem 'rails', '3.2.12'
 gem 'devise'
+
+#i18n
+gem 'rails-i18n'
+gem 'devise-i18n-views'
 gem 'activeadmin'
+
 #gem 'kaminari' #paginate
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'

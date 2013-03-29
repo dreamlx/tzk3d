@@ -3,13 +3,13 @@
     .container
       = link_to "3DTZK", root_path, :class => "brand"
       %ul{:class => "nav"}
-        %li{class: get_menu_status('Create')}=    link_to "Create", new_product_path
-        %li{class: get_menu_status('Product')}=    link_to "My Products", favor_products_path
+        %li{class: get_menu_status('Create')}=    link_to t(:create, scope: :menu), new_product_path
+        %li{class: get_menu_status('Product')}=    link_to t(:my_product, scope: :menu), favor_products_path
         - if user_signed_in?
-          %li{class: get_menu_status('Logout')}=  link_to 'Logout', destroy_user_session_path, :method => :delete
+          %li{class: get_menu_status('Logout')}=  link_to t(:logout, scope: :menu), destroy_user_session_path, :method => :delete
         - else
-          %li{class: get_menu_status('Register')}=  link_to 'Register', new_user_registration_path
-          %li{class: get_menu_status('Login')}=  link_to 'Login', new_user_session_path
+          %li{class: get_menu_status('Register')}=  link_to t(:register, scope: :menu), new_user_registration_path
+          %li{class: get_menu_status('Login')}=  link_to t(:login, scope: :menu), new_user_session_path
 
 #alert-bar.navbar.navbar-fixed-bottom
   - unless notice.nil?      
