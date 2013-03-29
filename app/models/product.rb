@@ -8,7 +8,7 @@ class Product < ActiveRecord::Base
   mount_uploader :photo, PhotoUploader
   mount_uploader :model3d, Model3dUploader
   
-  has_many :product_relations
+  has_many :product_relations, :class_name => 'ProductRelation'
   has_many :users, :through => :product_relations
   
   has_many :purchase_users, :through => :product_relations, :source => :user, :conditions => "rs_name = 'purchase'"

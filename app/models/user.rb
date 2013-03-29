@@ -9,11 +9,11 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me
   attr_accessible :name
   
-  has_many :product_relations
+  has_many :product_relations, :class_name => 'ProductRelation'
   
-  has_many :purchases, :class_name => 'product_relations', :conditions => "product_relations.rs_name = 'purchase'"
-  has_many :favors, :class_name => 'product_relations', :conditions => "product_relations.rs_name = 'favor'"
-  has_many :uploadeds, :class_name => 'product_relations', :conditions => "product_relations.rs_name = 'uploaded'"
+  has_many :purchases, :class_name => 'ProductRelation', :conditions => "product_relations.rs_name = 'purchase'"
+  has_many :favors, :class_name => 'ProductRelation', :conditions => "product_relations.rs_name = 'favor'"
+  has_many :uploadeds, :class_name => 'ProductRelation', :conditions => "product_relations.rs_name = 'uploaded'"
   
   has_many :products, :through => :product_relations
   
