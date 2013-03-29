@@ -1,15 +1,24 @@
 #require 'rbconfig'
 #HOST_OS = RbConfig::CONFIG['host_os']
-source 'https://rubygems.org'
+source 'http://rubygems.org'
 
 gem 'rails', '3.2.12'
+gem 'devise'
 
+#i18n
+gem 'rails-i18n'
+gem 'devise-i18n-views'
+gem 'activeadmin'
+
+#gem 'kaminari' #paginate
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'pg'
-gem 'bootstrap-sass', '2.0.0'
-
+gem 'bootstrap-sass'
+gem "cancan"
+gem "acts_as_rateable", :git => "git://github.com/anton-zaytsev/acts_as_rateable.git"
+gem 'acts_as_commentable', '3.0.1'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -25,6 +34,8 @@ end
 gem 'jquery-rails'
 gem 'haml'
 gem 'carrierwave'
+#gem 'will_paginate', '~> 3.0'
+gem 'bootstrap-will_paginate', :git => 'git://github.com/yrgoldteeth/bootstrap-will_paginate.git'
 gem 'rmagick'
 gem "heroku"
 gem 'rack-livereload'  

@@ -1,5 +1,26 @@
 Tzk3d::Application.routes.draw do
-  resources :products
+
+  ActiveAdmin.routes(self)
+
+  devise_for :admin_users, ActiveAdmin::Devise.config
+
+  devise_for :users
+
+  resources :products do
+    collection do
+      get :purchase
+      get :uploaded
+      get :favor
+    end
+    
+    member do
+      put :add_favor
+      put :cancel_favor
+      get :comments
+      post :add_comment
+      delete :remove_comment
+    end
+  end
 
 
   resources :topics, only: [:index]

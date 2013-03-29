@@ -1,0 +1,52 @@
+@import "bootstrap";  
+
+.locale_status{
+  background-color:#ccc;
+
+}
+
+.row-fluid .product-box {
+  width: 31%;
+}
+
+.thumbnails a:hover{
+  background-color:white;
+  color:#666;
+  text-decoration:none;
+}
+
+.thumbnail a:hover{
+  background-color:white;
+}
+
+.shop-info-text span{
+  margin-right:10px;
+}
+
+h1{
+  font-size: 1.5em;
+  font-weight: 300;
+  line-height: 1.2em;
+}
+
+.pagination span{
+  
+}
+
+.left{
+  float:left;
+}
+
+.right{
+  float:right;
+}
+
+h3 .favor{
+  font-size:11px;
+  color:#999;
+}
+
+.comment-action .date{
+  font-size:11px;
+  color:#999;
+}

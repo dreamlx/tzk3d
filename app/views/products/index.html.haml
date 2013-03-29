@@ -1,25 +1,42 @@
-%h1 Listing products
+%h1
+  = t(:product_title, scope: :views)
+%p.tabbable
+  %ul.nav.nav-tabs
+    /
+      %li{:class => @tab1_status}
+        %a{:href => purchase_products_path, :data => {:toggle => "tab"}}
+          已購模型
+    %li{:class => @tab2_status}
+      %a{:href => favor_products_path, :data => {:toggle => "tab"}}
+        = t(:my_favor, scope: :views)
+    %li{:class => @tab3_status}
+      %a{:href => uploaded_products_path, :data => {:toggle => "tab"}}
+        = t(:my_upload, scope: :views)
+  .tab-content
+    .tab-pane.active#tab1
 
-%table
-  %tr
-    %th name
-    %th Designer
-    %th Rating
-    %th Price
-    %th Photo
-    %th
-    %th
-    %th
-  - @products.each do |product|
-    %tr
-      %td= product.name
-      %td= product.designer
-      %td= product.rating
-      %td= product.price
-      %td
-        %img{src: product.photo.thumb.url}
-      %td= link_to 'Show', product
-      %td= link_to 'Edit', edit_product_path(product)
-      %td= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' }
+    .tab-pane#tab2
 
-= link_to 'New Product', new_product_path
+    .tab-pane#tab3  
+    
+.row-fluid
+  %ul.thumbnails
+    - @products.each do |product|
+      %li.product-box.span3
+        %a.thumbnail{href: product_path(product)}
+          %img{src: product.photo.thumbnail.url}
+          %h3
+            = product.name
+            %span.right.favor= t(:favor, favor: product.favor_count, scope: :views)
+          %p
+            %p.product-designer
+              = t(:designer, designer_name: product.designer, scope: :views)  
+            %p.price
+              = t(:price, price: product.price, scope: :views)          
+          
+            - if product.owner?(current_user)      
+              = link_to 'Edit', edit_product_path(product), class: 'btn'
+              = link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn'
+= will_paginate @products        
+        
+
