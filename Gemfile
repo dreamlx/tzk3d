@@ -4,11 +4,13 @@ source 'http://rubygems.org'
 
 gem 'rails', '3.2.12'
 gem 'devise'
+gem 'activeadmin'
+#gem 'kaminari' #paginate
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'pg'
-gem 'bootstrap-sass', '2.0.0'
+gem 'bootstrap-sass'
 gem "cancan"
 gem "acts_as_rateable", :git => "git://github.com/anton-zaytsev/acts_as_rateable.git"
 gem 'acts_as_commentable', '3.0.1'
