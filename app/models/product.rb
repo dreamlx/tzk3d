@@ -20,6 +20,10 @@ class Product < ActiveRecord::Base
     ProductRelation.find_by_user_id_and_product_id(current_user.id, self.id).blank?
   end
   
+  def favor_count
+    self.favor_users.count
+  end
+  
   def owner?(user)
     !ProductRelation.find(:first, conditions: "product_id = #{self.id} and user_id = #{user.id} and rs_name = 'uploaded'").nil?
   end

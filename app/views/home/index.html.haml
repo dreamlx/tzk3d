@@ -17,7 +17,7 @@
               .product-designer
                 = "Designer: " + product.designer
               .rating
-                = "Rating: " + product.average_rating_round.to_s
+                = "Favor: " + product.favor_count.to_s
               .price
                 = "Price: " + product.price.to_s
   = will_paginate @products

@@ -27,7 +27,7 @@
           %img{src: product.photo.thumbnail.url}
           %h3= product.name
           %p= 'Designer: ' + product.designer
-          %p= 'Price: ' + product.price.to_s
+          %p= 'Favor: ' + product.favor_count.to_s
           - if product.owner?(current_user)      
             .btn-group
               = link_to 'Edit', edit_product_path(product), class: 'btn'
