@@ -1,4 +1,10 @@
 @import "bootstrap";  
+
+.locale_status{
+  background-color:#ccc;
+
+}
+
 .row-fluid .product-box {
   width: 31%;
 }
@@ -33,4 +39,14 @@ h1{
 
 .right{
   float:right;
+}
+
+h3 .favor{
+  font-size:11px;
+  color:#999;
+}
+
+.comment-action .date{
+  font-size:11px;
+  color:#999;
 }

@@ -13,11 +13,10 @@
           .product-details.caption
             %h3
               = product.name
+              %span.right.favor= t(:favor, favor: product.favor_count, scope: :views)
             %p
-              .product-designer
-                = "Designer: " + product.designer
-              .rating
-                = "Favor: " + product.favor_count.to_s
-              .price
-                = "Price: " + product.price.to_s
+              %p.product-designer
+                = t(:designer, designer_name: product.designer, scope: :views) 
+              %p.price
+                = t(:price, price: product.price, scope: :views)
   = will_paginate @products

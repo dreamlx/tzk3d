@@ -5,3 +5,26 @@ en:
     register: Register
     login: Login
     logout: Logout
+  views:
+    back: Back
+    new_product: Upload Model
+    designer: "Designer: %{designer_name}" 
+    favor: "Favor(%{favor})"
+    price: "Price: %{price}"
+    comment: "Comment(%{comment})"
+    home: Home
+    add_to_favor: "Add to Favorites"
+    remove_favor: "Remove from Favorites"
+    download_model: Download Model
+    remove: Remove
+    edit: Edit
+    nav_favor: Favor
+    nav_uploaded: Uploaded
+    purchase: Purchases
+    my_favor: Favor List
+    my_upload: My products
+    leave_comment: Leave a comment
+    comments: Comments
+    product_title: Manage products
+
+       

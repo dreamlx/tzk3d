@@ -5,3 +5,46 @@ zh-CN:
     register: 注册
     login: 登录
     logout: 注销
+  views:
+    back: 返回
+    new_product: 上传模型
+    product_title: 我的模型库
+    designer: "设计师: %{designer_name}" 
+    favor: "喜欢(%{favor})"
+    price: "价格: %{price}"
+    comment: "评论(%{comment})"
+    home: 首页
+    download_model: 下载模型
+    remove: 删除
+    edit: 编辑
+    nav_favor: 喜欢列表
+    nav_uploaded: 上传列表
+    purchase: 购买列表
+    my_favor: 我的最爱
+    my_upload: 我的上传
+    leave_comment: 留言
+    comments: 评论
+    add_favor: 加入最爱
+    remove_favor: 移出最爱
+    #"Download Model"
+  activerecord:
+    models:
+      user: 用户
+      product: 模型
+      comment: 评论 
+    attributes:
+      user:
+        email: 邮箱
+        password: 密码
+        password_confirmation: 重复密码
+        remember_me: 记住我
+        name: 昵称
+      product:
+        designer: 设计师 
+        name: 模型名称
+        photo: 展示图片
+        price: 价格
+        model3d: 3d模型文件
+        desc: 描述
+        size: 模型尺寸
+       

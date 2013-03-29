@@ -11,6 +11,14 @@ class ApplicationController < ActionController::Base
     end
 
     I18n.locale = session[:locale] || I18n.default_locale
+    
+    if session[:locale] == 'en'
+      @en_status = 'locale_status'
+      @cn_status = ''
+    else
+      @en_status = ''
+      @cn_status = 'locale_status'      
+    end
   end	
   
   def put_nav

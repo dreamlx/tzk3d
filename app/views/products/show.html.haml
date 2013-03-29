@@ -6,15 +6,13 @@
       » 
       = @product.name
     %span.label.label-important
-      Price:
-      = @product.price    
+      = t(:price, price: @product.price, scope: :views)
     %span.label.label-info
-      Desinger:
-      = @product.designer
+      = t(:designer, designer_name: @product.designer, scope: :views)
     %span.label.label-info
-      = "(#{@product.favor_count})Favor"
+      = t(:favor, favor: @product.favor_count, scope: :views)
     %span.label.label-info
-      = "(#{@product.comments.count})comments"
+      = t(:comment, comment: @product.comments.count, scope: :views)
       
       
   .row-fluid
@@ -25,10 +23,11 @@
       %p= @product.desc
       %p= @product.size unless @product.size.blank?
       %h1.comments
-        Comments
+        = t(:comments, scope: :views)
       .comments-container
         %p
           = render "/comments/leave_comment"
+        %hr
         - unless @product.comments.empty?
           = render partial: "/comments/comment", collection: @product.comments
     .span3        
@@ -36,13 +35,14 @@
         .star
         -if current_user and 
           -if @product.check_favor(current_user) 
-            = button_to "Add to Favorites", add_favor_product_path, |
+            = button_to t(:add_to_favor, scope: :views), add_favor_product_path, |
             :method => :put, :class => "btn btn-warning"
           -else
-            = button_to "Move from Favorites", cancel_favor_product_path, |
+            = button_to t(:remove_favor, scope: :views), cancel_favor_product_path, |
             :method => :put, :class => "btn btn-danger"
       %p 
-        %a.btn{:href => @product.model3d.url } Download Model
+        %a.btn{:href => @product.model3d.url }
+          = t(:download_model, scope: :views)
   
 
   
@@ -50,5 +50,4 @@
     = link_to 'Edit', edit_product_path(@product) 
     |
     = link_to 'Destroy', @product, method: :delete, data: { confirm: 'Are you sure?' }
-    |
-    = link_to 'Back', products_path
+

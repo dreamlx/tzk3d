@@ -10,7 +10,11 @@
         - else
           %li{class: get_menu_status('Register')}=  link_to t(:register, scope: :menu), new_user_registration_path
           %li{class: get_menu_status('Login')}=  link_to t(:login, scope: :menu), new_user_session_path
-
+    .right
+      = link_to "中文版", {:controller => controller.controller_name, :action => controller.action_name, :locale => "zh-CN"}, :class => @cn_status
+      |             
+      = link_to "English", {:controller => controller.controller_name, :action => controller.action_name, :locale => "en"}, :class => @en_status
+  
 #alert-bar.navbar.navbar-fixed-bottom
   - unless notice.nil?      
     .alert.alert-block= notice 
