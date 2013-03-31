@@ -5,7 +5,6 @@ class Product < ActiveRecord::Base
   acts_as_rateable
   acts_as_commentable
 
-  #mount_uploader :photo, PhotoUploader
   mount_uploader :model3d, Model3dUploader
   
   has_many :pics, :as => :picable
@@ -18,9 +17,12 @@ class Product < ActiveRecord::Base
   has_many :favor_users, :through => :product_relations, :source => :user, :conditions => "rs_name = 'favor'"
   has_many :uploaded_user, :through => :product_relations, :source => :user, :conditions => "rs_name = 'uploaded'"
   
+  def photo
+    self.pics.first.photo
+  end
   
   def check_favor(current_user)
-    ProductRelation.find_by_user_id_and_product_id(current_user.id, self.id).blank?
+    ProductRelation.where(:user_id => current_user.id, :rs_name => "favor", :product_id => self.id).size > 0
   end
   
   def favor_count

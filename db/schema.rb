@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130331151708) do
+ActiveRecord::Schema.define(:version => 20130331172840) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -60,6 +60,12 @@ ActiveRecord::Schema.define(:version => 20130331151708) do
   add_index "comments", ["commentable_type"], :name => "index_comments_on_commentable_type"
   add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
 
+  create_table "nodes", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "pics", :force => true do |t|
     t.string   "title"
     t.string   "photo"
@@ -83,7 +89,6 @@ ActiveRecord::Schema.define(:version => 20130331151708) do
     t.string   "name"
     t.string   "designer"
     t.decimal  "price"
-    t.string   "photo"
     t.datetime "created_at",                    :null => false
     t.datetime "updated_at",                    :null => false
     t.string   "model3d"

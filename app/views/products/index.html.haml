@@ -2,23 +2,14 @@
   = t(:product_title, scope: :views)
 %p.tabbable
   %ul.nav.nav-tabs
-    /
-      %li{:class => @tab1_status}
-        %a{:href => purchase_products_path, :data => {:toggle => "tab"}}
-          已購模型
     %li{:class => @tab2_status}
-      %a{:href => favor_products_path, :data => {:toggle => "tab"}}
+      %a{:href => favor_products_path}
         = t(:my_favor, scope: :views)
     %li{:class => @tab3_status}
-      %a{:href => uploaded_products_path, :data => {:toggle => "tab"}}
+      %a{:href => uploaded_products_path}
         = t(:my_upload, scope: :views)
-  .tab-content
-    .tab-pane.active#tab1
 
-    .tab-pane#tab2
-
-    .tab-pane#tab3  
-    
+   
 .row-fluid
   %ul.thumbnails
     - @products.each do |product|

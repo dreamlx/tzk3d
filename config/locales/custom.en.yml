@@ -14,7 +14,7 @@ en:
     price: "Price: %{price}"
     comment: "Comment(%{comment})"
     home: Home
-    add_to_favor: "Add to Favorites"
+    add_favor: "Add to Favorites"
     remove_favor: "Remove from Favorites"
     download_model: Download Model
     remove: Remove
