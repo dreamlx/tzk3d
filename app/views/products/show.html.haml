@@ -18,8 +18,8 @@
   .row-fluid
     .span9
       .thumbnail
-        %a{:href => @product.photo.url, :targe => "_blank"}
-          = image_tag @product.photo.normal.url
+        -#%a{:href => @product.pics.first.nurl, :targe => "_blank"}
+          -#= image_tag @product.pics.first.normal.url
       %p= @product.desc
       %p= @product.size unless @product.size.blank?
       %h1.comments

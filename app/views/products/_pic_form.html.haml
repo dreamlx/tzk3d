@@ -1,0 +1,8 @@
+= f.fields_for :pics do |pic|
+  %p
+    - if pic.object.nil? || pic.object.new_record?
+      %span= pic.file_field :photo, :value => pic.object.photo.url
+    - else
+      %span= image_tag pic.object.photo.thumb.url
+    %span.span2= pic.link_to_remove t(:remove, scope: :views), class: "btn btn-warning"
+= f.link_to_add t("add_pictures", scope: :views), :pics, class: "btn btn-primary"

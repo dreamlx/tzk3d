@@ -4,6 +4,7 @@ source 'http://rubygems.org'
 
 gem 'rails', '3.2.12'
 gem 'devise'
+gem "nested_form"
 
 #i18n
 gem 'rails-i18n'

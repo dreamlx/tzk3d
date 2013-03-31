@@ -8,6 +8,7 @@ zh-CN:
   views:
     back: 返回
     new_product: 上传模型
+    edit_product: 更新模型
     product_title: 我的模型库
     designer: "设计师: %{designer_name}" 
     favor: "喜欢(%{favor})"
@@ -26,9 +27,11 @@ zh-CN:
     comments: 评论
     add_favor: 加入最爱
     remove_favor: 移出最爱
+    add_pictures: 添加图片
     #"Download Model"
   activerecord:
     models:
+      pic: 图片
       user: 用户
       product: 模型
       comment: 评论 
@@ -47,4 +50,8 @@ zh-CN:
         model3d: 3d模型文件
         desc: 描述
         size: 模型尺寸
+        pics: 图像库
+      pic:
+        photo: 图片
+        title: 标题  
        

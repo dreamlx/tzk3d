@@ -1,7 +1,8 @@
 en:
   menu:
     create: Create
-    my_product: My Product
+    my_product: My product
+    edit_product: Edit product
     register: Register
     login: Login
     logout: Logout
@@ -26,5 +27,13 @@ en:
     leave_comment: Leave a comment
     comments: Comments
     product_title: Manage products
+    add_pictures: Add pictures
+  activerecord:
+    models:
+      pic: picture
+    attributes:
+      product:
+        pics: Pictures
+        
 
        

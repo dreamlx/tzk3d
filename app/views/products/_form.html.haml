@@ -1,4 +1,4 @@
-= form_for(@product) do |f|
+=nested_form_for @product, :html=>{:multipart => true }  do |f|
   - if @product.errors.any?
     #error_explanation
       %h2
@@ -17,15 +17,16 @@
     .item-label= f.label :price
     .item-column= f.text_field :price
   .field
-    .item-label= f.label :photo
-    = image_tag @product.photo.thumb.url unless @product.photo.nil?
-    .item-column= f.file_field :photo
-  .field
     .item-label
       = f.label :model3d
-      -unless @product.model3d.blank? or @product.blank?
-        %span.label= @product.model3d.url.split('/').last 
-    .item-column= f.file_field :model3d
-  
+    -unless @product.model3d.nil? || @product.new_record?
+      %span.label= @product.model3d.url.split('/').last
+    -else 
+      .item-column= f.file_field :model3d
+  .field
+    .item-label= f.label :pics
+    //= image_tag @product.photo.thumb.url unless @product.photo.nil?
+    //.item-column= f.file_field :photo
+    = render :partial => "pic_form", :locals => {:f => f}  
   .actions
     = f.submit
