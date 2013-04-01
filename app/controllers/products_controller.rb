@@ -136,7 +136,7 @@ class ProductsController < ApplicationController
     rs.user_id = user_id
     rs.product_id = product_id
     rs.rs_name = rs_type
-    rs.save
+    rs.save if ProductRelation.find_by_user_id_and_product_id_and_rs_name(user_id, product_id, rs_type).nil?
   end
   
   def drop_rs(user_id,product_id,rs_type)

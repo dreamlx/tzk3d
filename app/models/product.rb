@@ -8,7 +8,7 @@ class Product < ActiveRecord::Base
   mount_uploader :model3d, Model3dUploader
   
   has_many :pics, :as => :picable
-  accepts_nested_attributes_for :pics, :allow_destroy => true
+  accepts_nested_attributes_for :pics, :allow_destroy => true, :reject_if => :all_blank
   
   has_many :product_relations, :class_name => 'ProductRelation'
   has_many :users, :through => :product_relations

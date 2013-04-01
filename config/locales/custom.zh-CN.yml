@@ -7,8 +7,8 @@ zh-CN:
     logout: 注销
   views:
     back: 返回
-    new_product: 上传模型
-    edit_product: 更新模型
+    new_product: 新建3d模型
+    edit_product: 更新3d模型
     product_title: 我的模型库
     designer: "设计师: %{designer_name}" 
     favor: "喜欢(%{favor})"
@@ -28,10 +28,11 @@ zh-CN:
     add_favor: 加入最爱
     remove_favor: 移出最爱
     add_pictures: 添加图片
+    can_not_save: 无法保存
     #"Download Model"
   activerecord:
     models:
-      pic: 图片
+      pic: 缩略图
       user: 用户
       product: 模型
       comment: 评论 
@@ -53,5 +54,11 @@ zh-CN:
         pics: 图像库
       pic:
         photo: 图片
-        title: 标题  
+        title: 标题
+  errors:
+    messages:
+      carrierwave_processing_error: "Cannot resize image."
+      carrierwave_integrity_error: "Not an image."
+      carrierwave_download_error: "Couldn't download image."
+      extension_white_list_error: "请检查文件类型"  
        

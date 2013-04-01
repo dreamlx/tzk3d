@@ -15,15 +15,15 @@
     - @products.each do |product|
       %li.product-box.span3
         %a.thumbnail{href: product_path(product)}
-          %img{src: product.photo.thumbnail.url}
+          =product.pics.size >0 ? image_tag(product.pics.first.photo.thumbnail.url) : image_tag("/assets/default.jpg")
           %h3
             = product.name
             %span.right.favor= t(:favor, favor: product.favor_count, scope: :views)
           %p
             %p.product-designer
               = t(:designer, designer_name: product.designer, scope: :views)  
-            %p.price
-              = t(:price, price: product.price, scope: :views)          
+            -#%p.price
+            -#  = t(:price, price: product.price, scope: :views)          
           
             - if product.owner?(current_user)      
               = link_to 'Edit', edit_product_path(product), class: 'btn'

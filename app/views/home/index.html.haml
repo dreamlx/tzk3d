@@ -10,7 +10,7 @@
     - @products.each do |product|      
       %li.product-box.span4
         %a{:href => product_path(product), :class => "thumbnail"}
-          =image_tag(product.photo.thumbnail.url) unless product.photo.nil?
+          = product.pics.size >0 ? image_tag(product.pics.first.photo.thumbnail.url) : image_tag("/assets/default.jpg")
           .product-details.caption
             %h3
               = product.name
@@ -18,6 +18,6 @@
             %p
               %p.product-designer
                 = t(:designer, designer_name: product.designer, scope: :views) 
-              %p.price
-                = t(:price, price: product.price, scope: :views)
+              -#%p.price
+              -#  = t(:price, price: product.price, scope: :views)
   = will_paginate @products

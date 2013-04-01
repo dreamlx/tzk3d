@@ -28,6 +28,7 @@ en:
     comments: Comments
     product_title: Manage products
     add_pictures: Add pictures
+    can_not_save: prohibited this product from being saved
   activerecord:
     models:
       pic: picture
