@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
 
   after_filter :put_nav, only: [:index, :purchase, :favor, :uploaded]
-  before_filter :set_locale
+  before_filter :set_locale, :check_locale_show
 		
   def set_locale
     # 可以將 ["en", "zh-TW"] 設定為 VALID_LANG 放到 config/environment.rb 中
@@ -25,4 +25,11 @@ class ApplicationController < ActionController::Base
     session[:product_nav] = params[:action]
   end
   
+  def check_locale_show
+    unless self.action_name  == "new" or self.action_name  == "edit"
+      session[:allow_show] = "true" 
+    else
+      session[:allow_show] = "false"
+    end
+  end
 end
