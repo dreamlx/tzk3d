@@ -1,4 +1,16 @@
 zh-CN:
+  category:
+    "3D Printing": "3D 打印机"
+    Art: 艺术
+    Fashion: 流行
+    Gadgets: 小玩意
+    Hobby: 嗜好
+    Household: 家用
+    Learning: 学习
+    Models: 模型
+    Tools: 工具
+    "Toys & Games": "玩具和游戏"
+    
   menu:
     create: 上传模型
     my_product: 我的模型库
@@ -46,6 +58,7 @@ zh-CN:
       product:
         designer: 设计师 
         name: 模型名称
+        category: 分类
         photo: 展示图片
         price: 价格
         model3d: 3d模型文件

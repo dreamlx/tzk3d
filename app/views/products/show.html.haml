@@ -4,7 +4,7 @@
     %h1
       = h_product_nav()
       » 
-      = @product.name
+      = t(@product.category.name, scope: :category) unless @product.category.nil?
     -#%span.label.label-important
     -#  = t(:price, price: @product.price, scope: :views)
     %span.label.label-info
