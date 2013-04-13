@@ -3,4 +3,4 @@
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
 $(document).ready ->
-  $("#pikame").PikaChoose()
+  $("#pikame").PikaChoose({carousel:true})

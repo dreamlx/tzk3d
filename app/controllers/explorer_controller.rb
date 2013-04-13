@@ -1,7 +1,4 @@
 class ExplorerController < ApplicationController
-  def index
-    @category = Category.find(params[:id])
-  end
   
   def show
     @category = Category.find(params[:id])
