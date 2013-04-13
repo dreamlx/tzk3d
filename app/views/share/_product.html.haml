@@ -1,0 +1,9 @@
+%a{:href => product_path(product), :class => "thumbnail"}
+  = product.pics.size >0 ? image_tag(product.pics.first.photo.thumbnail.url) : image_tag("/assets/default.jpg")
+  .product-details.caption
+    %h4
+      = product.name
+      %span.right.favor= t(:favor, favor: product.favor_count, scope: :views)
+    %p
+      %p.product-designer
+        = t(:designer, designer_name: product.designer, scope: :views)

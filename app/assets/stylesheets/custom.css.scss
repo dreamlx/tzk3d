@@ -1,5 +1,14 @@
 @import "bootstrap";  
 
+.category{
+  color:steelblue;
+  a{
+    color:steelblue;
+  }
+}
+
+.category a:visited{color:steelblue;}
+.category a:hover{color:white;}
 #alert-bar{top:50px;}
 .locale_status{
   background-color:#ccc;
