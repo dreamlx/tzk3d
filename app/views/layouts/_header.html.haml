@@ -6,20 +6,22 @@
         %li
           = link_to t("Create", scope: :menu), new_product_path
         %li.dropdown
-          %a{class: "dropdown-toggle", href: '#', data: {toggle: "dropdown", target: '#'} }
+          %a{ class: "dropdown-toggle", href: '#', data: { toggle: "dropdown", target: '#' } }
             = t("Discover", scope: "menu")
             %b.caret
-          %ul{class: "dropdown-menu", role: "menu", aria: {labellegby: "dLabel"}}
+          %ul{ class: "dropdown-menu", role: "menu", aria: { labellegby: "dLabel" } }
             - Category.all.each do |category|
               %li= link_to t(category.name, scope: "category"), explorer_path(category)
                 
         - if user_signed_in?
           %li.dropdown
-            %a{class: "dropdown-toggle", href: '#', data: {toggle: "dropdown", target: '#'} }
+            %a{ class: "dropdown-toggle", href: '#', data: { toggle: "dropdown", target: '#'} }
               = t("Your Account", scope: "menu")
               %b.caret
-            %ul{class: "dropdown-menu", role: "menu", aria: {labellegby: "dLabel"}}
-              %li= link_to t("Your Products", scope: :menu), favor_products_path        
+              
+            %ul{ class: "dropdown-menu", role: "menu", aria: {labellegby: "dLabel"} }
+              %li= link_to t("Profile", scope: :menu), edit_user_registration_path
+              %li= link_to t("Your Products", scope: :menu), favor_products_path
           %li
             =  link_to t("Logout", scope: :menu), destroy_user_session_path, :method => :delete
         - else

@@ -19,6 +19,7 @@ zh-CN:
     Logout: 注销
     Discover: 分类浏览
     "Your Account": "个人中心"
+    Profile: 我的账号
   views:
     back: 返回
     new_product: 新建3d模型
@@ -55,6 +56,7 @@ zh-CN:
         email: 邮箱
         password: 密码
         password_confirmation: 重复密码
+        current_password: 当前密码
         remember_me: 记住我
         name: 昵称
       product:
