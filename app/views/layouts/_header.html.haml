@@ -3,17 +3,17 @@
     .container
       = link_to "3DTZK", root_path, :class => "brand"
       %ul{:class => "nav"}
-        %li{class: get_menu_status('Create')}
+        %li
           =link_to t(:create, scope: :menu), new_product_path
-        %li{class: get_menu_status('Product')}
+        %li
           =    link_to t(:my_product, scope: :menu), favor_products_path
         - if user_signed_in?
-          %li{class: get_menu_status('Logout')}
+          %li
             =  link_to t(:logout, scope: :menu), destroy_user_session_path, :method => :delete
         - else
-          %li{class: get_menu_status('Register')}
+          %li
             =  link_to t(:register, scope: :menu), new_user_registration_path
-          %li{class: get_menu_status('Login')}
+          %li
             =  link_to t(:login, scope: :menu), new_user_session_path
   .right
     - if session[:allow_show] == "true" and false

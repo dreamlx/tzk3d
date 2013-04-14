@@ -23,8 +23,11 @@
     .item-label
       = f.label :model3d, t(:model3d, scope: [:activerecord, :attributes, :product])+"(*.stl)"
     -unless @product.model3d.nil? || @product.new_record?
-      %span.label= @product.model3d.url.split('/').last
-    .item-column= f.file_field :model3d, :required => "required", :placeholder => "demo.stl", :title => "demo.stl"
+      %span.label
+        = @product.model3d.url.split('/').last
+    -else
+      .item-column
+        = f.file_field :model3d, :required => "required", :placeholder => "demo.stl", :title => "demo.stl"
   .field
     .item-label= f.label :pics, t(:pics, scope: [:activerecord, :attributes, :product])+"(png, jpg, gif)"
     //= image_tag @product.photo.thumb.url unless @product.photo.nil?
