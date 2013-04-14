@@ -1,5 +1,8 @@
 # todo
-css menu
+add profile
+add avatar
+change upload file_field
+support progressbar for uploading
 
 #story
 users can see all pic
