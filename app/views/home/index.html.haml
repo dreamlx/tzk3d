@@ -1,16 +1,17 @@
 .hero-unit
   %h1
     3d图纸库
-  %p 分享3d圖紙和打印模型，爲設計師提供一站式服務
-  %p= link_to "Learn more", nil, :class => "btn btn-primary btn-large",:style => "color:white"
+  %p 分享3d图纸和打印模型，为设计师提供一站式服务
+  -#%p= link_to "Learn more", nil, :class => "btn btn-primary btn-large",:style => "color:white"
   
 .row-fluid
   - @categorys.each do |category|
     %h3.category
       = link_to t(category.name, scope: 'category'), explorer_path(category)
     %ul.thumbnails
-      - category.products[0..2].each do |product|
-        %li.product-box.span4
-          = render partial: '/share/product', object: product
+      - if category.products.size > 1
+        - category.products[0..2].each do |product|
+          %li.product-box.span4
+            = render partial: '/share/product', object: product
 
   = will_paginate @products
