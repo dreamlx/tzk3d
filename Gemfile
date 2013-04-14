@@ -41,7 +41,8 @@ gem 'bootstrap-will_paginate', :git => 'git://github.com/yrgoldteeth/bootstrap-w
 gem 'rmagick'
 gem "heroku"
 gem 'rack-livereload'  
-gem 'guard-livereload'  
+gem 'guard-livereload'
+gem 'awesome_nested_set'  
 #if HOST_OS =~ /linux/i
 #  gem 'therubyracer', '>= 0.8.2'
 #end
@@ -65,6 +66,8 @@ group :development do
   #gem "guard"
   gem "rspec-rails"
   gem "capybara",">= 1.1.1"
+  gem 'rails-footnotes', '>= 3.7.5.rc4'  
+  gem 'pry-rails'
   #gem 'rb-fsevent'
   #gem 'growl'
   #gem 'guard-pow'

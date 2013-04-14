@@ -1,10 +1,25 @@
 zh-CN:
+  category:
+    "3D Printing": "3D 打印机"
+    Art: 艺术
+    Fashion: 流行
+    Gadgets: 小玩意
+    Hobby: 嗜好
+    Household: 家用
+    Learning: 学习
+    Models: 模型
+    Tools: 工具
+    "Toys & Games": "玩具和游戏"
+    
   menu:
-    create: 上传模型
-    my_product: 我的模型库
-    register: 注册
-    login: 登录
-    logout: 注销
+    Create: 上传模型
+    "Your Products": "私人模型库"
+    Register: 注册
+    Login: 登录
+    Logout: 注销
+    Discover: 分类浏览
+    "Your Account": "个人中心"
+    Profile: 我的账号
   views:
     back: 返回
     new_product: 新建3d模型
@@ -41,11 +56,13 @@ zh-CN:
         email: 邮箱
         password: 密码
         password_confirmation: 重复密码
+        current_password: 当前密码
         remember_me: 记住我
         name: 昵称
       product:
         designer: 设计师 
         name: 模型名称
+        category: 分类
         photo: 展示图片
         price: 价格
         model3d: 3d模型文件

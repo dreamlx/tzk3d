@@ -10,8 +10,8 @@ class ApplicationController < ActionController::Base
       session[:locale] = params[:locale]
     end
 
-    I18n.locale = session[:locale] || I18n.default_locale
-    
+    #I18n.locale = session[:locale] || I18n.default_locale
+    I18n.locale = 'zh-CN'
     if session[:locale] == 'en'
       @en_status = 'locale_status'
       @cn_status = ''

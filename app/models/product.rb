@@ -1,5 +1,5 @@
 class Product < ActiveRecord::Base
-  attr_accessible :designer, :name, :price, :model3d, :desc, :size, :pics_attributes
+  attr_accessible :designer, :name, :price, :model3d, :desc, :size, :pics_attributes, :category_id
   validates_presence_of :name, :model3d
 
   acts_as_rateable
@@ -17,6 +17,7 @@ class Product < ActiveRecord::Base
   has_many :favor_users, :through => :product_relations, :source => :user, :conditions => "rs_name = 'favor'"
   has_many :uploaded_user, :through => :product_relations, :source => :user, :conditions => "rs_name = 'uploaded'"
   
+  belongs_to :category
   def photo
     self.pics.first.photo
   end

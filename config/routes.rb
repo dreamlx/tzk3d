@@ -1,5 +1,8 @@
 Tzk3d::Application.routes.draw do
 
+  resources :categories
+
+
   ActiveAdmin.routes(self)
 
   devise_for :admin_users, ActiveAdmin::Devise.config
@@ -25,7 +28,7 @@ Tzk3d::Application.routes.draw do
 
   resources :topics, only: [:index]
   resources :home, only: [:index]
-  
+  resources :explorer
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

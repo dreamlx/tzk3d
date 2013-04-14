@@ -5,4 +5,15 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
- AdminUser.create!(:email => 'admin@gmail.com', :password => '11111111', :password_confirmation => '11111111')
+AdminUser.create!(:email => 'admin@gmail.com', :password => '11111111', :password_confirmation => '11111111')
+ 
+Category.create!(name: "Art")
+Category.create!(name: "Fashion")
+Category.create!(name: "Gadgets")
+Category.create!(name: "Hobby")
+Category.create!(name: "Household")
+Category.create!(name: "Learning")
+Category.create!(name: "Models")
+Category.create!(name: "Tools")
+Category.create!(name: "Toys & Games")
+Category.create!(name: "3D Printing")         

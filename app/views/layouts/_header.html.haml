@@ -3,25 +3,39 @@
     .container
       = link_to "3DTZK", root_path, :class => "brand"
       %ul{:class => "nav"}
-        %li{class: get_menu_status('Create')}
-          =link_to t(:create, scope: :menu), new_product_path
-        %li{class: get_menu_status('Product')}
-          =    link_to t(:my_product, scope: :menu), favor_products_path
+        %li
+          = link_to t("Create", scope: :menu), new_product_path
+        %li.dropdown
+          %a{ class: "dropdown-toggle", href: '#', data: { toggle: "dropdown", target: '#' } }
+            = t("Discover", scope: "menu")
+            %b.caret
+          %ul{ class: "dropdown-menu", role: "menu", aria: { labellegby: "dLabel" } }
+            - Category.all.each do |category|
+              %li= link_to t(category.name, scope: "category"), explorer_path(category)
+                
         - if user_signed_in?
-          %li{class: get_menu_status('Logout')}
-            =  link_to t(:logout, scope: :menu), destroy_user_session_path, :method => :delete
+          %li.dropdown
+            %a{ class: "dropdown-toggle", href: '#', data: { toggle: "dropdown", target: '#'} }
+              = t("Your Account", scope: "menu")
+              %b.caret
+              
+            %ul{ class: "dropdown-menu", role: "menu", aria: {labellegby: "dLabel"} }
+              %li= link_to t("Profile", scope: :menu), edit_user_registration_path
+              %li= link_to t("Your Products", scope: :menu), favor_products_path
+          %li
+            =  link_to t("Logout", scope: :menu), destroy_user_session_path, :method => :delete
         - else
-          %li{class: get_menu_status('Register')}
-            =  link_to t(:register, scope: :menu), new_user_registration_path
-          %li{class: get_menu_status('Login')}
-            =  link_to t(:login, scope: :menu), new_user_session_path
+          %li
+            =  link_to t("Register", scope: :menu), new_user_registration_path
+          %li
+            =  link_to t("Login", scope: :menu), new_user_session_path
   .right
-    - if session[:allow_show] == "true"
+    - if session[:allow_show] == "true" and false
       = link_to "中文版", {:controller => controller.controller_name, :action => controller.action_name, :locale => "zh-CN"}, :class => @cn_status
       |             
       = link_to "English", {:controller => controller.controller_name, :action => controller.action_name, :locale => "en"}, :class => @en_status
   
-#alert-bar.navbar.navbar-fixed-top
+#alert-bar.navbar.navbar-static-top
   - unless notice.nil?      
     .alert.alert-block= notice
   -unless alert.nil?

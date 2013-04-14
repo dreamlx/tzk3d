@@ -9,6 +9,9 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me
   attr_accessible :name
   
+  has_one :profile
+  accepts_nested_attributes_for :profile
+  
   has_many :product_relations, :class_name => 'ProductRelation'
   
   has_many :purchases, :class_name => 'ProductRelation', :conditions => "product_relations.rs_name = 'purchase'"
