@@ -1,11 +1,6 @@
 en:
   menu:
-    create: Create
-    my_product: My product
-    edit_product: Edit product
-    register: Register
-    login: Login
-    logout: Logout
+
   views:
     back: Back
     new_product: Upload Model
