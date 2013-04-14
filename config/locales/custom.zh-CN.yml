@@ -12,11 +12,13 @@ zh-CN:
     "Toys & Games": "玩具和游戏"
     
   menu:
-    create: 上传模型
-    my_product: 我的模型库
-    register: 注册
-    login: 登录
-    logout: 注销
+    Create: 上传模型
+    "Your Products": "私人模型库"
+    Register: 注册
+    Login: 登录
+    Logout: 注销
+    Discover: 分类浏览
+    "Your Account": "个人中心"
   views:
     back: 返回
     new_product: 新建3d模型
