@@ -19,4 +19,13 @@ module ApplicationHelper
     
     return dscp
   end
+  
+  def get_head_title
+    if @product
+      title = "#{@product.category.name}-#{@product.name}-3d图纸库"
+    else
+      title = "3d图纸库-3d打印机图纸下载,在线3d打印模型设计平台"
+    end
+    return title  
+  end
 end
