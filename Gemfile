@@ -14,7 +14,7 @@ gem 'activeadmin'
 #gem 'kaminari' #paginate
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
-
+gem "fog", "~> 1.3.1"
 gem 'pg'
 gem 'bootstrap-sass'
 gem "cancan"
