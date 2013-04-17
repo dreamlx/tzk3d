@@ -3,7 +3,7 @@
   .product-details.caption
     %h4
       = product.name
-      %span.right.favor= t(:favor, favor: product.favor_count, scope: :views)
+      %span.right.favor= t("views.favor", favor: product.favor_count)
     %p
       %p.product-designer
-        = t(:designer, designer_name: product.designer, scope: :views)
+        = t("views.designer", designer_name: product.designer)

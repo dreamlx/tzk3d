@@ -9,7 +9,7 @@
   - @categorys.each do |category|
     - if category.products.count > 0
       %h3.category
-        = link_to t(category.name, scope: 'category'), explorer_path(category)
+        = link_to t("category.#{category.name}"), explorer_path(category)
       %ul.thumbnails
         - category.products[0..2].each do |product|
           %li.product-box.span4

@@ -14,7 +14,7 @@
 
 <% @categories.each do |category| %>
   <tr>
-    <td><%= t(category.name, scope: "category") %></td>
+    <td><%= t("category.#{category.name}") %></td>
     <td><%= category.parent_id %></td>
     <td><%= category.lft %></td>
     <td><%= category.rgt %></td>
