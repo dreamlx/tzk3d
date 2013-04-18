@@ -4,8 +4,8 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
-    @products = Product.all
-    
+    @products = Product.paginate(page: params[:page], per_page: 21)
+
     respond_with @products
   end
 
@@ -17,7 +17,7 @@ class ProductsController < ApplicationController
       format.json { render json: @products }
     end
   end
-  
+
   def favor
     @products = current_user.favor_products.paginate(page: params[:page], per_page: 21)
     @tab2_status = "active"
@@ -26,7 +26,7 @@ class ProductsController < ApplicationController
       format.json { render json: @products }
     end
   end
-  
+
   def uploaded
     @products = current_user.uploaded_products.paginate(page: params[:page], per_page: 21)
     @tab3_status = "active"
@@ -35,7 +35,7 @@ class ProductsController < ApplicationController
       format.json { render json: @products }
     end
   end
-  
+
   # GET /products/1
   # GET /products/1.json
   def show
@@ -56,16 +56,19 @@ class ProductsController < ApplicationController
   def edit
     @product = Product.find(params[:id])
   end
-  
+
   # POST /products
   # POST /products.json
   def create
     @product = Product.new(params[:product])
-    if @product.save
-      respond_with @product, notice: 'Product was successfully created.' 
-      create_rs(current_user.id, @product.id, "uploaded")
-    else
-      render action: "new"
+    respond_to do |format|
+      if @product.save
+        format.html { redirect_to @product, notice: 'Product was successfully created.' }
+        format.json { head :no_content }
+        create_rs(current_user.id, @product.id, "uploaded")
+      else
+        format.html { render action: "new" }
+      end
     end
   end
 
@@ -90,13 +93,13 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
     respond_with @product
   end
-  
+
   def cancel_favor
     drop_rs(current_user.id, params[:id], "favor")
     @product = Product.find(params[:id])
-    respond_with @product    
+    respond_with @product
   end
-  
+
   # DELETE /products/1
   # DELETE /products/1.json
   def destroy
@@ -109,12 +112,12 @@ class ProductsController < ApplicationController
       format.json { head :no_content }
     end
   end
-  
+
   # comments
   def comments
     @comments = Product.find(params[:id]).comments
   end
-  
+
   def add_comment
     p = Product.find(params[:id])
     c = Comment.new(params[:comment])
@@ -123,14 +126,14 @@ class ProductsController < ApplicationController
     p.comments << c
     redirect_to product_path(p), notice: 'Comment was successfully added.'
   end
-  
+
   def remove_comment
     c = Comment.find(params[:comment_id])
     p =  Product.find(params[:id])
     p.comments.delete(c)
     redirect_to product_path(p), notice: 'Comment was successfully deleted.'
   end
-  
+
   private
   def create_rs(user_id,product_id,rs_type)
     rs = ProductRelation.new
@@ -139,10 +142,10 @@ class ProductsController < ApplicationController
     rs.rs_name = rs_type
     rs.save if ProductRelation.find_by_user_id_and_product_id_and_rs_name(user_id, product_id, rs_type).nil?
   end
-  
+
   def drop_rs(user_id,product_id,rs_type)
     rs = ProductRelation.find_by_user_id_and_product_id_and_rs_name(user_id, product_id, rs_type)
     rs.destroy
   end
-  
+
 end

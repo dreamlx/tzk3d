@@ -2,7 +2,7 @@ Tzk3d::Application.routes.draw do
 
   resources :categories
 
-
+  root :to => 'home#index'
   ActiveAdmin.routes(self)
 
   devise_for :admin_users, ActiveAdmin::Devise.config
@@ -15,7 +15,7 @@ Tzk3d::Application.routes.draw do
       get :uploaded
       get :favor
     end
-    
+
     member do
       put :add_favor
       put :cancel_favor
@@ -78,7 +78,7 @@ Tzk3d::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => 'home#index'
+
 
   # See how all your routes lay out with "rake routes"
 
