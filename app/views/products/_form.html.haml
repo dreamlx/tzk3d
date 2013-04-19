@@ -21,7 +21,7 @@
     .item-column= f.select :category_id, Category.all.collect{|c| [t(c.name, scope: :category), c.id]}
   .field
     .item-label
-      = f.label :model3d, t(:model3d, scope: [:activerecord, :attributes, :product])+"(*.stl)"
+      = f.label :model3d, t(:model3d, scope: [:activerecord, :attributes, :product])+"(只支持stl文件上传)"
     -unless @product.model3d.nil? || @product.new_record?
       %span.label
         = @product.model3d.url.split('/').last
