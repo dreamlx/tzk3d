@@ -22,7 +22,7 @@ zh-CN:
     Profile: 我的账号
   views:
     back: 返回
-    new_product: 新建3d模型
+    new_product: 完成上传
     edit_product: 更新3d模型
     product_title: 我的模型库
     designer: "设计师: %{designer_name}" 
