@@ -3,13 +3,14 @@ zh-CN:
     "3D Printing": "3D 打印机"
     Art: 艺术
     Fashion: 流行
-    Gadgets: 小玩意
+    Gadgets: 杂物
     Hobby: 嗜好
     Household: 家用
     Learning: 学习
     Models: 模型
     Tools: 工具
-    "Toys & Games": "玩具和游戏"
+    Toys: "玩具"
+    Games: 游戏
     
   menu:
     Create: 上传模型
@@ -22,6 +23,7 @@ zh-CN:
     Profile: 我的账号
   views:
     back: 返回
+    new: 完成
     new_product: 完成上传
     edit_product: 更新3d模型
     product_title: 我的模型库
@@ -44,6 +46,7 @@ zh-CN:
     remove_favor: 移出最爱
     add_pictures: 添加图片
     can_not_save: 无法保存
+    "Upload ModelFile": 上传模型
     #"Download Model"
   activerecord:
     models:

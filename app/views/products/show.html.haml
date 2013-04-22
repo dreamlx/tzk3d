@@ -40,13 +40,14 @@
       %p{:id => "favor"}
         -unless current_user and @product.check_favor(current_user) 
           = button_to t("views.add_favor"), add_favor_product_path, |
-          :method => :put, :class => "btn btn-warning"
+          method: "put", class: "btn btn-warning"
         -else
           = button_to t("views.remove_favor"), cancel_favor_product_path, |
-          :method => :put, :class => "btn btn-danger"
-      %p 
-        %a.btn.btn-primary{:href => @product.model3d.url }
-          = t("views.download_model")
+          method: "put", class: "btn btn-danger"
+      %p
+        - @product.model3ds.each_with_index do |model3d,i|
+          %a.btn.btn-primary{href: model3d.modelfile.url }
+            = t("views.download_model") + "文件:#{ i + 1 }"
       - if current_user and @product.owner?(current_user)
         %hr      
         %p= link_to 'Edit', edit_product_path(@product), class: "btn" 

@@ -1,8 +1,8 @@
-= f.fields_for :pics do |pic|
+= f.fields_for :pics do |p|
   %p
-    - if pic.object.nil? || pic.object.new_record?
-      %span= pic.file_field :photo, :pattern => "(.*)+\.(jpg|png|gif|JPG|PNG|GIF)$"
+    - if p.object.nil? || p.object.new_record?
+      %span= p.file_field :photo, :pattern => "(.*)+\.(jpg|png|gif|JPG|PNG|GIF)$"
     - else
-      %span= image_tag pic.object.photo.thumb.url
-    %span.span2= pic.link_to_remove t(:remove, scope: :views), class: "btn btn-warning"
-= f.link_to_add t("add_pictures", scope: :views), :pics, class: "btn btn-primary btn-smaller"
+      %span= image_tag p.object.photo.thumb.url
+    %span.span2= p.link_to_remove t("views.remove"), class: "btn btn-warning"
+= f.link_to_add t("views.add_pictures"), :pics, class: "btn btn-primary btn-smaller"

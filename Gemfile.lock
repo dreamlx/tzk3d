@@ -5,6 +5,15 @@ GIT
     acts_as_rateable (3.0.0)
 
 GIT
+  remote: git://github.com/guard/guard-spork.git
+  revision: 76155fb58f1c92536d1c8f91566983b7c373a52a
+  specs:
+    guard-spork (1.5.0)
+      childprocess (>= 0.2.3)
+      guard (>= 1.1)
+      spork (>= 0.8.4)
+
+GIT
   remote: git://github.com/yrgoldteeth/bootstrap-will_paginate.git
   revision: 994fbb96ab52d2bdbb6035e534060f9df18b34c6
   specs:
@@ -12,7 +21,7 @@ GIT
       will_paginate
 
 GEM
-  remote: http://rubygems.org/
+  remote: http://ruby.taobao.org/
   specs:
     actionmailer (3.2.12)
       actionpack (= 3.2.12)
@@ -141,10 +150,6 @@ GEM
     guard-rspec (2.5.3)
       guard (>= 1.1)
       rspec (~> 2.11)
-    guard-spork (1.5.0)
-      childprocess (>= 0.2.3)
-      guard (>= 1.1)
-      spork (>= 0.8.4)
     haml (4.0.2)
       tilt
     has_scope (0.5.1)
@@ -313,7 +318,7 @@ DEPENDENCIES
   guard-bundler
   guard-livereload
   guard-rspec
-  guard-spork
+  guard-spork!
   haml
   heroku
   jquery-rails

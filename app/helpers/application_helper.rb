@@ -23,7 +23,8 @@ module ApplicationHelper
   def get_head_title
     #产品-分类-网站名称
     title = ""
-    title = "#{@product.name}-" + t("category.#{@product.category.name}")  if @product
+    title = "#{ @product.name }-" if @product
+    title += t("category.#{ @product.category.name }")  if @product and @product.category
     title += t("category.#{@category.name}")                       if @category
     title += "-3d图纸库-3dtzk.com"  
     

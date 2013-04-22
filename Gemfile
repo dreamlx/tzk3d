@@ -1,6 +1,6 @@
 #require 'rbconfig'
 #HOST_OS = RbConfig::CONFIG['host_os']
-source 'http://rubygems.org'
+source 'http://ruby.taobao.org'
 
 gem 'rails', '3.2.12'
 gem 'devise'
@@ -40,9 +40,9 @@ gem 'carrierwave'
 gem 'bootstrap-will_paginate', :git => 'git://github.com/yrgoldteeth/bootstrap-will_paginate.git'
 gem 'rmagick'
 gem "heroku"
-gem 'rack-livereload'  
+gem 'rack-livereload'
 gem 'guard-livereload'
-gem 'awesome_nested_set'  
+gem 'awesome_nested_set'
 #if HOST_OS =~ /linux/i
 #  gem 'therubyracer', '>= 0.8.2'
 #end
@@ -66,7 +66,7 @@ group :development do
   #gem "guard"
   gem "rspec-rails"
   gem "capybara",">= 1.1.1"
-  gem 'rails-footnotes', '>= 3.7.5.rc4'  
+  gem 'rails-footnotes', '>= 3.7.5.rc4'
   gem 'pry-rails'
   #gem 'rb-fsevent'
   #gem 'growl'
@@ -84,7 +84,7 @@ group :test do
   gem "launchy", ">= 2.0.5"
   #gem 'webrat' #web自动测试用于ruby
   gem "guard-rspec"
-  gem "guard-spork"
+  gem "guard-spork", :github => 'guard/guard-spork'
   gem "spork"
   gem 'guard-bundler'
   gem 'rb-fsevent',  :require => false
