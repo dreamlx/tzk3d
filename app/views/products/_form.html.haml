@@ -3,7 +3,7 @@
     #error_explanation
       %h2
         = pluralize(@product.errors.count, "error")
-        = t(:can_not_save, scope: :views)
+        = t("views.can_not_save")
       %ul
         - @product.errors.full_messages.each do |msg|
           %li= msg
@@ -18,21 +18,17 @@
   -#  .item-column= f.text_field :price
   .field
     .item-label= f.label :category
-    .item-column= f.select :category_id, Category.all.collect{|c| [t(c.name, scope: :category), c.id]}
+    .item-column= f.select :category_id, Category.all.collect{ |c| [t("views.#{ c.name }"), c.id] }
   .field
     .item-label
-      = f.label :model3d, t(:model3d, scope: [:activerecord, :attributes, :product])+"(只支持stl文件上传)"
-    -unless @product.model3d.nil? || @product.new_record?
-      %span.label
-        = @product.model3d.url.split('/').last
-    -else
-      .item-column
-        = f.file_field :model3d, required: "required", placeholder: "demo.stl", title: "demo.stl", value: @product.model3d.url
+      = f.label :model3d, t(:model3d, scope: [:activerecord, :attributes, :product]) + "(*.stl)"
+    = render partial: "model3d_form", locals: { f: f }
   .field
-    .item-label= f.label :pics, t(:pics, scope: [:activerecord, :attributes, :product])+"(png, jpg, gif)"
+    .item-label
+      = f.label :pics, t(:pics, scope: [:activerecord, :attributes, :product]) + "(png, jpg, gif)"
     //= image_tag @product.photo.thumb.url unless @product.photo.nil?
     //.item-column= f.file_field :photo
-    = render :partial => "pic_form", :locals => {:f => f}  
+    = render partial: "pic_form", locals: { f: f }  
   %hr
   .actions
     = f.submit class: "btn btn-primary"

@@ -1,14 +1,16 @@
 class Product < ActiveRecord::Base
-  attr_accessible :designer, :name, :price, :model3d, :desc, :size, :pics_attributes, :category_id
-  validates_presence_of :name, :model3d
+  attr_accessible :designer, :name, :price, :desc, :size, :category_id
+  attr_accessible :model3ds_attributes, :pics_attributes
+  validates_presence_of :name
 
   acts_as_rateable
   acts_as_commentable
 
-  mount_uploader :model3d, Model3dUploader
+  has_many :model3ds
   
   has_many :pics, :as => :picable
   accepts_nested_attributes_for :pics, :allow_destroy => true, :reject_if => :all_blank
+  accepts_nested_attributes_for :model3ds, :allow_destroy => true, :reject_if => :all_blank
   
   has_many :product_relations, :class_name => 'ProductRelation'
   has_many :users, :through => :product_relations
