@@ -5,7 +5,7 @@ source 'http://ruby.taobao.org'
 gem 'rails', '3.2.12'
 gem 'devise'
 gem "nested_form"
-
+gem 'capistrano', '~> 2.12.0'
 #i18n
 gem 'rails-i18n'
 gem 'devise-i18n-views'
