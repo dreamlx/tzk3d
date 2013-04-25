@@ -1,7 +1,9 @@
 %div{:class => "navbar navbar-inverse navbar-static-top"}
   .navbar-inner
     .container
-      = link_to "3DTZK", root_path, :class => "brand"
+      %a.brand{href: root_path}
+        3DTZK
+        %sup beta
       %ul{:class => "nav"}
         %li
           = link_to t("menu.Create"), new_product_path
