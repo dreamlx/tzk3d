@@ -5,8 +5,9 @@
       = h_product_nav()
       » 
       = link_to t("category.#{@category.name}"), explorer_path(@category) unless @category.nil?
-    -#%span.label.label-important
-    -#  = t("views.price", price: @product.price)
+      » 
+      = @product.name
+      
     %span.label.label-info
       = t("views.designer", designer_name: @product.designer)
     %span.label.label-info
