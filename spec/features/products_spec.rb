@@ -8,10 +8,22 @@ feature "Products" do
 
   describe "GET /products", :type => :feature do
     given(:file){File.new("#{Rails.root}/spec/files/resume.stl", 'rb')}
+    given(:product){Product.create!(:name=>"test model",:model3d=>file,:designer=>"test designer")}
     it "show currently created product" do
-      Product.create!(:name=>"test model",:model3d=>file)
+      product
       visit products_path
       page.should have_content("test model")
+    end
+
+    it "should show product detail by id" do
+      visit product_path(product)
+      page.should have_content("test designer")
+    end
+
+    it "should save downloaded file" do
+      visit product_path(product)
+      click_link "下载模型"
+      page.response_headers['Content-Type'].should == "text/plain"
     end
   end
 
@@ -29,6 +41,16 @@ feature "Products" do
       find('form.button_to').should have_button('移出最爱')
       visit products_path
       page.should have_content("mow lawn")
+    end
+
+    it "should invalid when uploading model3d with non *.stl file" do
+      expect{Product.create!(:name=>"test model",:model3d=>"#{Rails.root}/spec/files/resume.pdf")}.to raise_error
+      visit new_product_path
+      fill_in "product_name", :with => "test model 3d"
+      attach_file('product_model3d', "#{Rails.root}/spec/files/resume.pdf")
+      click_button "新增模型"
+      visit products_path
+      page.should_not have_content("test model 3d")
     end
   end
 end
