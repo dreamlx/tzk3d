@@ -8,18 +8,48 @@ class Product < ActiveRecord::Base
 
   has_many :model3ds
   
-  has_many :pics, :as => :picable
-  accepts_nested_attributes_for :pics, :allow_destroy => true, :reject_if => :all_blank
-  accepts_nested_attributes_for :model3ds, :allow_destroy => true, :reject_if => :all_blank
+  has_many :pics, as: :picable
   
-  has_many :product_relations, :class_name => 'ProductRelation'
-  has_many :users, :through => :product_relations
+  accepts_nested_attributes_for :pics, 
+                                allow_destroy: true, 
+                                reject_if: :all_blank
+                                
+  accepts_nested_attributes_for :model3ds, 
+                                allow_destroy: true, 
+                                reject_if: :all_blank
   
-  has_many :purchase_users, :through => :product_relations, :source => :user, :conditions => "rs_name = 'purchase'"
+  has_many :product_relations, class_name: 'ProductRelation'
+  
+  has_many :users, through: :product_relations
+  
+  has_many  :purchase_users, 
+            through: :product_relations, 
+            source: :user, 
+            conditions: "rs_name = 'purchase'"
+            
   has_many :favor_users, :through => :product_relations, :source => :user, :conditions => "rs_name = 'favor'"
   has_many :uploaded_user, :through => :product_relations, :source => :user, :conditions => "rs_name = 'uploaded'"
   
   belongs_to :category
+  
+  state_machine :status, initial: :pending do
+    state :pending
+    state :unapproved
+    state :approved
+
+    event :disapprove do
+      transition :pending     => :unapproved
+    end 
+    
+    event :edit do
+      transition [:unapproved, :approved]  => :pending
+    end
+    
+    event :approve do
+      transition :pending     => :approved
+    end    
+  end
+  
   def photo
     self.pics.first.photo
   end

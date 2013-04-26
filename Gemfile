@@ -1,22 +1,22 @@
 #require 'rbconfig'
 #HOST_OS = RbConfig::CONFIG['host_os']
 source 'http://ruby.taobao.org'
-
+gem 'state_machine'
 gem 'rails', '3.2.12'
 gem 'devise'
 gem "nested_form"
 gem 'capistrano', '~> 2.12.0'
+gem 'activeadmin'
+
 #i18n
 gem 'rails-i18n'
 gem 'devise-i18n-views'
-gem 'activeadmin'
+
 
 #gem 'kaminari' #paginate
-# Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails.git'
+
 gem "fog", "~> 1.3.1"
 gem 'pg'
-gem 'bootstrap-sass'
 gem "cancan"
 gem "acts_as_rateable", :git => "git://github.com/anton-zaytsev/acts_as_rateable.git"
 gem 'acts_as_commentable', '3.0.1'
@@ -25,7 +25,8 @@ gem 'acts_as_commentable', '3.0.1'
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
-
+  gem 'bootstrap-sass'
+  gem 'font-awesome-sass-rails', '~> 3.0.2.2'
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   #gem 'therubyracer', :platforms => :ruby
 
@@ -36,7 +37,6 @@ gem 'jquery-rails'
 gem 'haml'
 
 gem 'carrierwave'
-#gem 'will_paginate', '~> 3.0'
 gem 'bootstrap-will_paginate', :git => 'git://github.com/yrgoldteeth/bootstrap-will_paginate.git'
 gem 'rmagick'
 gem "heroku"
@@ -68,6 +68,11 @@ group :development do
   gem "capybara",">= 1.1.1"
   gem 'rails-footnotes', '>= 3.7.5.rc4'
   gem 'pry-rails'
+  gem 'quiet_assets', '~> 1.0.1'
+  gem 'awesome_print', '~> 1.1.0'
+  gem 'letter_opener', '~> 1.1.0'
+  gem 'better_errors', '~> 0.7.0'
+  gem 'binding_of_caller', '~> 0.7.1'
   #gem 'rb-fsevent'
   #gem 'growl'
   #gem 'guard-pow'
