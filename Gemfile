@@ -5,6 +5,8 @@ source 'http://ruby.taobao.org'
 gem 'rails', '3.2.12'
 gem 'devise'
 gem "nested_form"
+gem 'state_machine'
+gem 'simple_form'
 gem 'capistrano', '~> 2.12.0'
 #i18n
 gem 'rails-i18n'
@@ -18,6 +20,7 @@ gem "fog", "~> 1.3.1"
 gem 'pg'
 gem 'bootstrap-sass'
 gem "cancan"
+gem "status"
 gem "acts_as_rateable", :git => "git://github.com/anton-zaytsev/acts_as_rateable.git"
 gem 'acts_as_commentable', '3.0.1'
 # Gems used only for assets and not required
