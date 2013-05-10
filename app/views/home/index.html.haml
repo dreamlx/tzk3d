@@ -11,7 +11,7 @@
       %h3.category
         = link_to t("category.#{category.name}"), explorer_path(category)
       %ul.thumbnails
-        - category.products[0..2].each do |product|
+        - category.published_products[0..2].each do |product|
           %li.product-box.span4
             = render partial: '/share/product', object: product
 

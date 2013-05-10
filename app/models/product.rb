@@ -5,7 +5,9 @@ class Product < ActiveRecord::Base
 
   acts_as_rateable
   acts_as_commentable
-
+  
+  #scope :published, lambda { |item| where(["status = ?", "approved"]) }
+  
   has_many :model3ds
   
   has_many :pics, as: :picable
