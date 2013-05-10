@@ -46,7 +46,7 @@ zh-CN:
     remove_favor: 移出最爱
     add_pictures: 添加图片
     can_not_save: 无法保存
-    "Upload ModelFile": 上传模型
+    "Upload ModelFile": 选择stl文件
     #"Download Model"
   activerecord:
     models:

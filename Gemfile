@@ -5,6 +5,8 @@ gem 'state_machine'
 gem 'rails', '3.2.12'
 gem 'devise'
 gem "nested_form"
+gem 'state_machine'
+gem 'simple_form'
 gem 'capistrano', '~> 2.12.0'
 gem 'activeadmin'
 
@@ -18,6 +20,7 @@ gem 'devise-i18n-views'
 gem "fog", "~> 1.3.1"
 gem 'pg'
 gem "cancan"
+gem "status"
 gem "acts_as_rateable", :git => "git://github.com/anton-zaytsev/acts_as_rateable.git"
 gem 'acts_as_commentable', '3.0.1'
 # Gems used only for assets and not required

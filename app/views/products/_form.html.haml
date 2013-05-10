@@ -1,4 +1,4 @@
-=nested_form_for @product, :html=>{:multipart => true }  do |f|
+= simple_nested_form_for(@product, :html => {:class => 'form-horizontal',:multipart => true }) do |f|
   - if @product.errors.any?
     #error_explanation
       %h2
@@ -7,28 +7,19 @@
       %ul
         - @product.errors.full_messages.each do |msg|
           %li= msg
-  .field
-    .item-label= f.label :name
-    .item-column= f.text_field :name, :required => "required", :placeholder => "model name..."
-  .field
-    .item-label= f.label :designer
-    .item-column= f.text_field :designer
-  -#.field
-  -#  .item-label= f.label :price
-  -#  .item-column= f.text_field :price
-  .field
-    .item-label= f.label :category
-    .item-column= f.select :category_id, Category.all.collect{ |c| [t("views.#{ c.name }"), c.id] }
-  .field
-    .item-label
-      = f.label :model3d, t(:model3d, scope: [:activerecord, :attributes, :product]) + "(*.stl)"
-    = render partial: "model3d_form", locals: { f: f }
-  .field
-    .item-label
-      = f.label :pics, t(:pics, scope: [:activerecord, :attributes, :product]) + "(png, jpg, gif)"
-    //= image_tag @product.photo.thumb.url unless @product.photo.nil?
-    //.item-column= f.file_field :photo
-    = render partial: "pic_form", locals: { f: f }  
+  = f.input :name, placeholder: "product name...", required: "required"
+  = f.input :designer, placeholder: "designer name"
+  = f.association :category
+  
+  %ol
+    = f.simple_fields_for :model3ds do |m|
+      %li= render 'model3d_form', f: m
+  %p= f.link_to_add t("views.Upload ModelFile"), :model3ds, class: "btn btn-primary btn-smaller"
+  
+  %ol
+    = f.simple_fields_for :pics do |p|
+      %li= render 'pic_form', f: p
+  %p= f.link_to_add t("views.add_pictures"), :pics, class: "btn btn-primary btn-smaller"
   %hr
   .actions
     = f.submit class: "btn btn-primary"
