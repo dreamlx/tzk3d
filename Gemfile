@@ -42,7 +42,7 @@ gem 'haml'
 gem 'carrierwave'
 gem 'bootstrap-will_paginate', :git => 'git://github.com/yrgoldteeth/bootstrap-will_paginate.git'
 gem 'rmagick'
-gem "heroku"
+#gem "heroku"
 gem 'rack-livereload'
 gem 'guard-livereload'
 gem 'awesome_nested_set'
