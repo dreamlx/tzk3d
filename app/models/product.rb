@@ -38,7 +38,7 @@ class Product < ActiveRecord::Base
     state :approved
 
     event :disapprove do
-      transition :pending     => :unapproved
+      transition [:pending, :approved, nil]     => :unapproved
     end 
     
     event :edit do
@@ -46,7 +46,7 @@ class Product < ActiveRecord::Base
     end
     
     event :approve do
-      transition :pending     => :approved
+      transition [:pending, nil, :unapproved]     => :approved
     end    
   end
   

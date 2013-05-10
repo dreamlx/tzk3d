@@ -14,7 +14,10 @@
       = t("views.favor", favor: @product.favor_count)
     %span.label.label-info
       = t("views.comment", comment: @product.comments.count)
-      
+    - if user_signed_in?
+      %span.label.label-warning
+        状态
+        = t("state.#{@product.status}")  
   .row-fluid
     .span9
       %p

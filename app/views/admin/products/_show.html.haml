@@ -1,14 +1,15 @@
-%h3= @product.name
-%h5
+- @fontcolor = @product.approved? ? "color:green" : "color:red"
+%h3{ :style=> @fontcolor }
   status:
   = @product.status||"pending"  
+%h3= @product.name
 %span.label.label-info
   = t("views.designer", designer_name: @product.designer)
 %span.label.label-info
   = t("views.favor", favor: @product.favor_count)
 %span.label.label-info
   = t("views.comment", comment: @product.comments.count)
-%ul#pikame
+%ul
   - @product.pics.each do |pic|
     %li
       %a{:href => pic.photo.url}
