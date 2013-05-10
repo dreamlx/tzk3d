@@ -11,7 +11,10 @@ zh-CN:
     Tools: 工具
     Toys: "玩具"
     Games: 游戏
-    
+  state:
+    approved: 通过审核
+    unapproved: 退回修改
+    pending: 等待审核  
   menu:
     Create: 上传模型
     "Your Products": "私人模型库"
