@@ -20,9 +20,6 @@ gem 'bootstrap-will_paginate', :git => 'git://github.com/yrgoldteeth/bootstrap-w
 #gem 'kaminari' 
 
 gem "fog", "~> 1.3.1"
-gem 'pg'
-gem 'mysql2'
-
 gem "cancan"
 gem "acts_as_rateable", :git => "git://github.com/anton-zaytsev/acts_as_rateable.git"
 gem 'acts_as_commentable', '3.0.1'
@@ -60,6 +57,7 @@ case HOST_OS
 end
 
 group :development, :test do
+  gem 'pg'
   gem 'rspec-rails'
   gem 'spork'
   gem "guard-spork", :github => 'guard/guard-spork'
@@ -98,6 +96,7 @@ group :test do
 end
 
 group :production do
+  gem 'mysql2'
   gem 'thin'
 end
 

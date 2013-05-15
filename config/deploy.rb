@@ -9,7 +9,7 @@ role :db,  "tzk3d.com", :primary => true # This is where Rails migrations will r
 default_run_options[:pty] = true  # Must be set for the password prompt
 set :deploy_to, "/home/dreamlinx/ROR/tzk3d.com"
 set :user, "dreamlinx"
-set :user_sudo, false
+set :use_sudo, false
 set :ssh_options, { :forward_agent => true }
 #repo details
 set :scm, :git
