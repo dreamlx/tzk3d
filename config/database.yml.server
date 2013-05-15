@@ -4,26 +4,32 @@
 #   Ensure the SQLite 3 gem is defined in your Gemfile
 #   gem 'sqlite3'
 development:
-  adapter: mysql
-  database: tzk3d_dev
-  username: root
-  password: aliyun2melx
+  adapter: mysql2
+  host: dreamlx2.mysql.rds.aliyuncs.com 
+  port: 3306
+  database: tzk3d_production
+  username: tzk3d
+  password: tzk3d2014
   host: localhost
   encoding: utf8
 
 test:
-  adapter: mysql
-  database: tzk3d_test
-  username: root
-  password: aliyun2melx
+  adapter: mysql2
+  host: dreamlx2.mysql.rds.aliyuncs.com 
+  port: 3306
+  database: tzk3d_production
+  username: tzk3d
+  password: tzk3d2014
   host: localhost
   encoding: utf8
 
 production:
-  adapter: mysql
+  adapter: mysql2
+  host: dreamlx2.mysql.rds.aliyuncs.com 
+  port: 3306
   database: tzk3d_production
-  username: root
-  password: aliyun2melx
+  username: tzk3d
+  password: tzk3d2014
   host: localhost
   encoding: utf8
 

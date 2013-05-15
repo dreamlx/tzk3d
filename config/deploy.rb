@@ -7,7 +7,7 @@ role :db,  "tzk3d.com", :primary => true # This is where Rails migrations will r
 
 #server details
 default_run_options[:pty] = true  # Must be set for the password prompt
-set :deploy_to, "/home/dreamlinx/tzk3d.com"
+set :deploy_to, "/home/dreamlinx/ROR/tzk3d.com"
 set :user, "dreamlinx"
 set :user_sudo, true
 set :ssh_options, { :forward_agent => true }
@@ -23,7 +23,7 @@ set :deploy_via, :remote_cache
 
 #tasks
 namespace :deploy do
-  task :start, :roles => :app do
+  task :restart, :roles => :app do
     run "touch #{current_path/tmp/restart.txt}"
   end
   

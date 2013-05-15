@@ -9,7 +9,10 @@
           %li= msg
   = f.input :name, placeholder: "product name...", required: "required"
   = f.input :designer, placeholder: "designer name"
-  = f.association :category
+  - @categories = []
+  - Category.all.each do |item|
+    - @categories << [t("category.#{item.name}"),item.id.to_s]
+  = f.input :category_id, collection: @categories
   
   %ol
     = f.simple_fields_for :model3ds do |m|
