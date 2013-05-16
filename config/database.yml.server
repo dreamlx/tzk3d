@@ -10,7 +10,6 @@ development:
   database: tzk3d_production
   username: tzk3d
   password: tzk3d2014
-  host: localhost
   encoding: utf8
 
 test:
@@ -20,7 +19,6 @@ test:
   database: tzk3d_production
   username: tzk3d
   password: tzk3d2014
-  host: localhost
   encoding: utf8
 
 production:
@@ -30,7 +28,6 @@ production:
   database: tzk3d_production
   username: tzk3d
   password: tzk3d2014
-  host: localhost
   encoding: utf8
 
 

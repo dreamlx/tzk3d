@@ -1,3 +1,6 @@
+require 'bundler/capistrano'  
+set :bundle_flags, '--quiet'
+
 # main details
 set :application, "3dtzk"
 role :web, "tzk3d.com"                          # Your HTTP server, Apache/etc
@@ -40,6 +43,12 @@ namespace :deploy do
     run "mv #{release_path}/config/database.yml #{release_path}/config/database.yml.orig"
     run "mv #{release_path}/config/database.yml.server #{release_path}/config/database.yml"
   end
+
+
+  task :precompile, :roles => :web do  
+    run "cd #{current_path} && rake RAILS_ENV=production assets:precompile"  
+  end  
+
 end
 
 after 'deploy:update_code', 'deploy:symlink_shared'
