@@ -1,5 +1,5 @@
-require 'bundler/capistrano'  
-set :bundle_flags, '--quiet'
+#require 'bundler/capistrano'  
+#set :bundle_flags, '--quiet'
 
 # main details
 set :application, "3dtzk"
