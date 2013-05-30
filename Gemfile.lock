@@ -14,6 +14,13 @@ GIT
       spork (>= 0.8.4)
 
 GIT
+  remote: git://github.com/mbleigh/acts-as-taggable-on.git
+  revision: 2f2768f854324000ea28d441ef3c0a378158ed40
+  specs:
+    acts-as-taggable-on (2.4.2.pre)
+      rails (>= 3, < 5)
+
+GIT
   remote: git://github.com/yrgoldteeth/bootstrap-will_paginate.git
   revision: 994fbb96ab52d2bdbb6035e534060f9df18b34c6
   specs:
@@ -62,8 +69,6 @@ GEM
     activesupport (3.2.12)
       i18n (~> 0.6)
       multi_json (~> 1.0)
-    acts-as-taggable-on (2.4.1)
-      rails (>= 3, < 5)
     acts_as_commentable (3.0.1)
     addressable (2.3.4)
     ansi (1.4.3)
@@ -338,7 +343,7 @@ PLATFORMS
 
 DEPENDENCIES
   activeadmin
-  acts-as-taggable-on
+  acts-as-taggable-on!
   acts_as_commentable (= 3.0.1)
   acts_as_rateable!
   awesome_nested_set
