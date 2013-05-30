@@ -24,6 +24,7 @@ gem "fog", "~> 1.3.1"
 gem "cancan"
 gem "acts_as_rateable", :git => "git://github.com/anton-zaytsev/acts_as_rateable.git"
 gem 'acts_as_commentable', '3.0.1'
+gem 'acts-as-taggable-on'
 gem 'jquery-rails'
 gem 'haml'
 gem 'carrierwave'

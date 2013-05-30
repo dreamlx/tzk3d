@@ -75,6 +75,7 @@ zh-CN:
         desc: 描述
         size: 模型尺寸
         pics: 图像库
+        tag_list: Tag
       pic:
         photo: 图片
         title: 标题

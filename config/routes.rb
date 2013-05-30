@@ -17,6 +17,7 @@ Tzk3d::Application.routes.draw do
       get :purchase
       get :uploaded
       get :favor
+      get :tag
     end
     
     member do

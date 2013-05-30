@@ -16,3 +16,6 @@
 // Loads all Bootstrap javascripts
 //= require bootstrap
 //= require jquery_nested_form
+$(function() {
+  $('#tags').tagsInput();
+})

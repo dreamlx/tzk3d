@@ -1,8 +1,14 @@
-#require 'bundler/capistrano'  
-#set :bundle_flags, '--quiet'
+set :rvm_ruby_string, :local               # use the same ruby as used locally for deployment
+set :rvm_autolibs_flag, "read-only"        # more info: rvm help autolibs
+
+before 'deploy:setup', 'rvm:install_rvm'   # install RVM
+before 'deploy:setup', 'rvm:install_ruby'  # install Ruby and create gemset, OR:
+before 'deploy:setup', 'rvm:create_gemset' # only create gemset
+require 'rvm/capistrano' 
 
 # main details
 set :application, "3dtzk"
+set :keep_releases, 10 
 role :web, "tzk3d.com"                          # Your HTTP server, Apache/etc
 role :app, "tzk3d.com"                          # This may be the same as your `Web` server
 role :db,  "tzk3d.com", :primary => true # This is where Rails migrations will run
@@ -27,7 +33,7 @@ set :deploy_via, :remote_cache
 #tasks
 namespace :deploy do
   task :restart, :roles => :app do
-    run "touch #{current_path/tmp/restart.txt}"
+    run "touch #{current_path}/tmp/restart.txt"
   end
   
   task :stop, :roles => :app do
@@ -46,12 +52,15 @@ namespace :deploy do
 
 
   task :precompile, :roles => :web do  
-    run "cd #{current_path} && rake RAILS_ENV=production assets:precompile"  
+    run "cd #{current_path} && #{rake} RAILS_ENV=production assets:precompile"  
   end  
 
 end
 
-after 'deploy:update_code', 'deploy:symlink_shared'
+after "deploy:update", "deploy:migrate"
+after "deploy:migrate", "deploy:symlink_shared"
+after "deploy:migrate", "deploy:precompile"
+
 after 'deploy:update_code', 'deploy:change_db'
 # if you want to clean up old releases on each deploy uncomment this:
 # after "deploy:restart", "deploy:cleanup"

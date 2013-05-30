@@ -27,3 +27,6 @@ users can see all pic
 
     # find posts with rating '4'
     Post.find_average_of( 4 ) #=> array
+
+## juqery tag
+    https://github.com/xoxco/jQuery-Tags-Input

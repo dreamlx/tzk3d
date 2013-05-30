@@ -9,6 +9,14 @@ class ProductsController < ApplicationController
     respond_with @products
   end
 
+  def tag
+    @products = Product.tagged_with(params[:tag]).by_join_date.paginate(:page => params[:page], :per_page => 21)
+    respond_to do |format|
+      format.html { render action: "index" }
+      format.json { render json: @products }
+    end
+  end
+
   def purchase
     @products = current_user.purchase_products.paginate(page: params[:page], per_page: 21)
     @tab1_status = "active"

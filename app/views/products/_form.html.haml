@@ -13,6 +13,7 @@
   - Category.all.each do |item|
     - @categories << [t("category.#{item.name}"),item.id.to_s]
   = f.input :category_id, collection: @categories
+  = f.input :tag_list, placeholder: "tag1,tag2,tag3...", input_html: { id: "tags" }
   
   %ol
     = f.simple_fields_for :model3ds do |m|

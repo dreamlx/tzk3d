@@ -1,10 +1,12 @@
 class Product < ActiveRecord::Base
-  attr_accessible :designer, :name, :price, :desc, :size, :category_id
+  attr_accessible :designer, :name, :price, :desc, :size, :category_id, :tag_list
   attr_accessible :model3ds_attributes, :pics_attributes
   validates_presence_of :name
 
   acts_as_rateable
   acts_as_commentable
+  acts_as_taggable
+  scope :by_join_date, order("created_at DESC")
   
   #scope :published, lambda { |item| where(["status = ?", "approved"]) }
   

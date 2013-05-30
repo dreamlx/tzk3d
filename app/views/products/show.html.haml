@@ -52,6 +52,16 @@
         - @product.model3ds.each_with_index do |model3d,i|
           %a.btn.btn-primary{href: model3d.modelfile.url }
             = t("views.download_model") + "文件:#{ i + 1 }"
+      %hr
+      -unless @product.tag_list.blank? 
+        %h4 
+          Tag
+        .tagsinput  
+          - @product.tag_list.each do |tag|
+            %span.tag
+              %a{ href: "/products/tag?tag=#{tag}"}
+                = tag
+          
       - if current_user and @product.owner?(current_user)
         %hr      
         %p= link_to 'Edit', edit_product_path(@product), class: "btn" 
