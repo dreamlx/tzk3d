@@ -1,11 +1,10 @@
 require 'rbconfig'
 HOST_OS = RbConfig::CONFIG['host_os']
-source 'http://ruby.taobao.org'
+source 'https://ruby.taobao.org'
 
 gem 'rails', '3.2.12'
 gem 'devise'
 gem "nested_form"
-gem 'state_machine'
 gem 'simple_form'
 gem 'activeadmin'
 gem 'state_machine'
